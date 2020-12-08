@@ -1,0 +1,53 @@
+/* CONSOLE SECTION */
+
+#console_choose_label {
+    width: 90%;
+    margin: auto;
+    display: block;
+    font-family: "Zilla Slab", sans-serif;
+    font-size: 1.5em;
+}
+
+#terminal {
+    overflow: auto;
+    height: 600px;
+    color: white;
+    background-color: black;
+    width: 90%;
+    margin: 10px auto 0 auto;
+    border: solid var(--grey) 1px;
+}
+
+#cmds {
+    width: 90%;
+    margin: 0 auto 60px auto;
+    height: 30px;
+}
+
+#cmds > input {
+    width: 85%;
+    height: 100%;
+    font-family: "Zilla Slab", sans-serif;
+    font-size: 1.5em;
+}
+
+#cmds > button {
+    width: 14.5%;
+    height: 120%;
+    font-family: "Zilla Slab", sans-serif;
+    font-size: 1.5em;
+}
+
+.green {
+    color: var(--green);
+}
+
+.red {
+    color: var(--red);
+}
+
+#cmd_error {
+    font-family: "Lobster", sans-serif;
+    font-size: 1.5em;
+    margin-top: 0;
+}

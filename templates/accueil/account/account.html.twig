@@ -1,0 +1,310 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset("css/account.css") }}" />
+    <link rel="stylesheet" href="{{ asset('css/notifications.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="{{ asset('js/graphs.js') }}"></script>
+{% endblock %}
+
+{% block title %}Mon Compte{% endblock %}
+
+{% block body %}
+
+    {% if email_confirmation is not null %}
+        <section class="alert_msg">
+
+            {% if email_confirmation['error'] is defined %}
+
+                <div class="alert_msg_error">
+
+                    <h3>Une ou plusieurs erreurs ont été détectées:</h3>
+
+                    <p>
+                        {% for error in email_confirmation['error'] %}
+                            -> {{ error }}<br>
+                        {% endfor %}
+                    </p>
+
+                </div>
+
+            {% elseif email_confirmation['success'] is defined %}
+
+                <div class="alert_msg_success">
+
+                    <h3>Une ou plusieurs tâches ont été réalisées avec succès:</h3>
+
+                    <p>
+                        {% for success in email_confirmation['success'] %}
+                            -> {{ success }}<br>
+                        {% endfor %}
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+        </section>
+    {% endif %}
+
+    <section class="main_header">
+
+        <div class="main_header_info">
+
+            <div>
+                <img class="main_header_img" src="https://minotar.net/helm/{{ user.pseudo }}/185.png" alt="#"/>
+            </div>
+
+            <div class="main_header_info_text">
+
+                <h1>{{ user.pseudo }}</h1>
+
+                <div class="main_header_rank">
+                    <h2 style="background-color: {{ userServer.rankcolor }}">{{ userServer.groupe }}</h2>
+                </div>
+                <p class="main_header_sign_up">
+                    <span class="main_header_title">Inscription: </span>
+                    le {{ user.date|date("d/m/Y à H:i") }}
+                </p>
+            </div>
+
+        </div>
+
+
+        {% if app.user == user %}
+            <div class="main_header_button">
+                <a class="btn" href="{{ path('security_logout') }}">Déconnexion</a>
+
+                {% if canAccessPanel %}
+                    <a href="{{ path('admin') }}"><i class="fas fa-user-cog"></i></a>
+                {% endif %}
+
+                <div class="{% if notifications['false']|length > 0 %}active{% endif %} notif_button">
+                    <i class="notif_button_icon fas fa-bell"></i>
+                    <p class="notif_button_text">+{{ notifications['false']|length }}</p>
+                </div>
+            </div>
+        {% endif %}
+    </section>
+
+    <section class="sous_menu">
+        <ul>
+            <li><p class="btn-menu" id="infos_menu">Informations</p></li>
+            <li><p class="btn-menu" id="friends_menu">Amis</p></li>
+            <li><p class="btn-menu" id="stats_menu">Statistiques</p></li>
+        </ul>
+        <div>
+
+            <div class="content-menu" id="infos">
+
+                <h2>► Informations de votre compte:</h2>
+
+                <div class="card">
+
+                    <div class="card_left">
+                        <div class="card_text_block">
+                            <h3>Pseudo:</h3>
+                            <p>{{ user.pseudo }}</p>
+                        </div>
+
+                        <div class="card_text_block">
+                            <h3>Inscription</h3>
+                            <p>Le {{ user.date|date("d/m/Y à H:i") }}</p>
+                        </div>
+
+                        {% if app.user == user %}
+
+                            <div class="card_text_block">
+
+                                {% if app.user.email != 'NONE' %}
+
+                                    <h3>Email</h3>
+                                    <p>thom_car@yahoo.fr</p>
+
+                                {% else %}
+
+                                    <button class="collapsible"><i class="fas fa-mouse-pointer"></i> Email</button>
+
+                                    <div class="email_option_view">
+
+                                        <h3 class="red"><i class="fas fa-times"></i> Email non Confirmé</h3>
+                                        <form method="post">
+                                            <div class="text_input_box">
+                                                <input type="email" name="cmail" required>
+                                                <label><i class="fas fa-pen"></i> Votre email</label>
+                                            </div>
+                                            <button class="btn_sendmail" type="submit" name="cmail_submit">Envoyer un mail</button>
+                                        </form>
+
+
+                                    </div>
+
+                                {% endif %}
+
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+                    <div class="card_center_verticale_line"></div>
+
+                    <div class="card_right">
+                        <div class="card_text_block">
+                            <h3>Ilycoin(s):</h3>
+                            <p>{{ userServer.pj }}</p>
+                        </div>
+
+                        <div class="card_text_block">
+                            <h3>Don(s)</h3>
+                            <p>{{ userServer.pb }}</p>
+                        </div>
+
+                        <div class="card_text_block">
+
+                            <h3>Serveur</h3>
+
+                            {% if userServer.server == "NONE" %}
+
+                                <p>Hors-Ligne</p>
+
+                            {% else %}
+
+                                <p>{{ userServer.server }}</p>
+
+                            {% endif %}
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="content-menu" id="friends">
+
+                {% for friend in friends %}
+
+                    <div class="popup">
+                        <img src="https://minotar.net/helm/{{ friend }}/110.png" alt="{{ friend }}">
+                        <span class="popup_text" id="PopUp_{{ friend }}">{{ friend }}</span>
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+            <!-- STATS CONTENT -->
+            <div class="content-menu" id="stats">
+
+                <!-- STATS GRAPHS -->
+
+                <h2>► Graphiques</h2>
+
+                <div class="stats_graphs">
+                    <div>
+                        <h3>Temps de jeu</h3>
+                        <canvas id="graph_time"></canvas>
+                    </div>
+                    <div>
+                        <h3>Ilycoins gagnés</h3>
+                        <canvas id="graph_ilycoins"></canvas>
+                    </div>
+
+                        <script>
+                            implementGraph('player_stats', {
+                                'type': 'time',
+                                'game_stats': {{ game_stats|json_encode|raw }},
+                            });
+
+                            implementGraph('player_stats', {
+                                'type': 'ilycoins',
+                                'game_stats': {{ game_stats|json_encode|raw }},
+                            });
+                        </script>
+                </div>
+
+                <!-- STATS TABLES -->
+
+                <h2>► Tableaux</h2>
+
+                <div class="stats_tables">
+
+                    {% for game,stat in game_stats %}
+                        <div class="table_card">
+
+                            <h3>{{ game }}</h3>
+                            <table>
+
+                                {% for key,value in stat %}
+                                    <tr>
+                                        <td>{{ key }}</td>
+                                        {% if key == 'time' %}
+                                            {% set value = value|date('H:i:s') %}
+                                        {% endif %}
+                                        <td class="text_align_right">{{ value }}</td>
+                                    </tr>
+                                {% endfor %}
+
+                            </table>
+
+                        </div>
+                    {% endfor %}
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="notifs">
+        <div class="notifs_content">
+            <div class="notifs_top">
+                <i class="notifs_close fas fa-times"></i>
+
+                <form class="notifs_top_form" method="post">
+                    <button id="btn-read" type="submit" name="notifs_read_submit">Marquer toutes les notifications comme lues</button>
+                    <label>
+                        <i class="fas fa-search"></i>
+                        <input type="text" name="notifs_search_value" placeholder="Rechercher">
+                    </label>
+                    <button id="btn-search" type="submit" name="search_submit">GO</button>
+                </form>
+            </div>
+
+            <div class="notifs_bot">
+                <ul class="notifs_bot_buttons">
+                    <li><p id="notifs_read_false" class="cliqued">Non lues ({{ notifications['false']|length }})</p></li>
+                    <li><p id="notifs_read_true">Déjà lues ({{ notifications['true']|length }})</p></li>
+                </ul>
+                <div class="notifs_bot_content">
+                    <table>
+                        <tr class="table_head">
+                            <td>Type</td>
+                            <td>Description</td>
+                            <td></td>
+                        </tr>
+
+                        {% for notif in notifications['false']%}
+                            <tr class="table_content notifs_read_false_content">
+                                <td>{{ notif.type }}</td>
+                                <td>{{ notif.description }}</td>
+                                <td class="table_content_btn"><a href="{{ notif.link }}">Voir</a></td>
+                            </tr>
+                        {% endfor %}
+
+                        {% for notif in notifications['true']%}
+                            <tr class="table_content notifs_read_true_content">
+                                <td>{{ notif.type }}</td>
+                                <td>{{ notif.description }}</td>
+                                <td class="table_content_btn"><a href="{{ notif.link }}">Voir</a></td>
+                            </tr>
+                        {% endfor %}
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

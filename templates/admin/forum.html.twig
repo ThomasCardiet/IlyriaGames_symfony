@@ -1,0 +1,136 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block body %}
+
+    <div class="forum">
+
+        <h1 class="block_title_h1"><i class="far fa-plus-square"></i> Partie Création</h1>
+
+        <!-- CATEGORY CREATION -->
+
+        <div class="category_creation">
+
+            <h2 class="block_title_h2 category_creation_title"><i class="fas fa-folder-open"></i> Création d'une Catégorie</h2>
+
+
+            <form method="POST">
+                <input class="text_forum" type="text" name="create_category_name" size="70" maxlength="70" placeholder="Nom de Catégorie" />
+                <div class="button_forum_back"><input class="button_forum" type="submit" name="create_category_submit" value="Créer"></div>
+
+                {% if msg['msg_create_category_success'] is defined %}
+
+                    <p class="valide"><i class="fas fa-exclamation-triangle"></i> {{ msg['msg_create_category_success'] }}</p>
+
+                {% elseif msg['msg_create_category_error'] is defined %}
+
+                    <p class="error"><i class="far fa-check-circle"></i> {{ msg['msg_create_category_error'] }}</p>
+
+                {% endif %}
+
+            </form>
+
+        </div>
+
+        <!-- SUB_CATEGORY CREATION -->
+
+        <div class="subcategory_creation">
+
+            <h2 class="block_title_h2 subcategory_creation_title"><i class="fas fa-comment"></i> Création d'une Sous-Catégorie</h2>
+
+
+            <form method="POST">
+                <select name="create_subcategory_option" class="categorie_options">
+                    {% for category in values['categories'] %}
+
+                        <option value="{{ category.id }}">{{ category.name }}</option>
+
+                    {% endfor %}
+                </select>
+                <input class="text_forum" type="text" name="create_subcategory_name" size="70" maxlength="70" placeholder="Nom de Sous-Catégorie" />
+                <div class="button_forum_back"><input class="button_forum" type="submit" name="create_subcategory_submit" value="Créer"></div>
+
+                {% if msg['msg_create_subcategory_success'] is defined %}
+
+                    <p class="valide"><i class="fas fa-exclamation-triangle"></i> {{ msg['msg_create_subcategory_success'] }}</p>
+
+                {% elseif msg['msg_create_subcategory_error'] is defined %}
+
+                    <p class="error"><i class="far fa-check-circle"></i> {{ msg['msg_create_subcategory_error'] }}</p>
+
+                {% endif %}
+
+            </form>
+
+        </div>
+
+        <!-- DELETION -->
+
+        <h1 class="block_title_h1"><i class="far fa-trash-alt"></i> Partie Suppression</h1>
+
+        <!-- CATEGORY DELETION -->
+
+        <div class="category_deletion">
+
+            <h2 class="block_title_h2 category_deletion_title"><i class="fas fa-folder-open"></i> Suppression d'une Catégorie</h2>
+
+            <h3 class="deletion_warning"><span style="color: red; "><i class="fas fa-exclamation-triangle"></i> Attention, en supprimant ce contenu, vous supprimerez tous les fichiers contenus à l'intérieur</span></h3>
+
+            <form method="POST">
+                <select name="delete_category_option" class="categorie_options">
+                    {% for category in values['categories'] %}
+
+                        <option value="{{ category.id }}">{{ category.name }}</option>
+
+                    {% endfor %}
+                </select>
+                <div class="button_forum_back"><input class="button_forum" type="submit" name="delete_category_submit" value="Supprimer"></div>
+
+                {% if msg['msg_delete_category_success'] is defined %}
+
+                    <p class="valide"><i class="fas fa-exclamation-triangle"></i> {{ msg['msg_delete_category_success'] }}</p>
+
+                {% elseif msg['msg_delete_category_error'] is defined %}
+
+                    <p class="error"><i class="far fa-check-circle"></i> {{ msg['msg_delete_category_error'] }}</p>
+
+                {% endif %}
+
+            </form>
+
+        </div>
+
+        <!-- SUB_CATEGORY DELETION -->
+
+        <div class="subcategory_deletion">
+
+            <h2 class="block_title_h2 subcategory_deletion_title"><i class="fas fa-comment"></i> Suppression d'une Sous-Catégorie</h2>
+
+            <h3 class="deletion_warning"><span style="color: red; "><i class="fas fa-exclamation-triangle"></i> Attention, en supprimant ce contenu, vous supprimerez tous les fichiers contenus à l'intérieur</span></h3>
+
+            <form method="POST">
+                <select name="delete_subcategory_option" class="souscategorie_options">
+                    {% for sub_category in values['sub_categories'] %}
+
+                        <option value="{{ sub_category.id }}">{{ sub_category.name }}</option>
+
+                    {% endfor %}
+                </select>
+                <div class="button_forum_back"><input class="button_forum" type="submit" name="delete_subcategory_submit" value="Supprimer"></div>
+
+                {% if msg['msg_delete_subcategory_success'] is defined %}
+
+                    <p class="valide"><i class="fas fa-exclamation-triangle"></i> {{ msg['msg_delete_subcategory_success'] }}</p>
+
+                {% elseif msg['msg_delete_subcategory_error'] is defined %}
+
+                    <p class="error"><i class="far fa-check-circle"></i> {{ msg['msg_delete_subcategory_error'] }}</p>
+
+                {% endif %}
+
+            </form>
+
+        </div>
+
+    </div>
+
+{% endblock %}

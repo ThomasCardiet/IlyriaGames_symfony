@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>IlyriaGames | Serveur Mini-Jeux</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="stylesheet" href="{{ asset('css/admin/home.css') }}">
+    <link rel="icon" href="{{ asset('img/logo.png') }}">
+    <script src="https://kit.fontawesome.com/dc883addae.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+            crossorigin="anonymous"></script>
+    {% block headscripts %}{% endblock %}
+</head>
+<body>
+
+    <header>
+        <div class="head_block">
+
+            <div class="burger">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-times"></i>
+            </div>
+
+            <div class="liens"><a href="{{ path('accueil') }}">Accueil</a></div>
+        </div>
+
+        <nav class="head_nav">
+
+            {% for name,values in pages %}
+                {% if power >= values['power'] %}
+                    <a href="{{ path('admin') }}/{{ name }}">
+                        <nav class="{% if page_name == name %}cliqued{% endif %} button">
+                            {{ values['icon']|raw }} {{ name }}
+                        </nav>
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </nav>
+
+    </header>
+
+    <main>
+        <div class="contener">
+
+            <div class="membres_page">
+
+                {% block body %}{% endblock %}
+
+            </div>
+
+        </div>
+    </main>
+
+{% block javascripts %}{% endblock %}
+<script src="{{ asset("js/admin/admin.js") }}"></script>
+</body>
+</html>
+

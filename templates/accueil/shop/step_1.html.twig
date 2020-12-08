@@ -1,0 +1,31 @@
+{% extends 'accueil/shop/shop_base.html.twig' %}
+
+{% block content_title %}Choisissez le mode de paiement{% endblock %}
+
+{% block content %}
+
+    <div class="payement_contents">
+
+        <a href="{{ path('shop') }}/{{ playerid_value }}-dedipass" class="payement_mode_card">
+            <h4>Mobile</h4>
+            <img src="{{ asset('img/shop/dedipass.png') }}" alt="">
+        </a>
+
+        <a href="{{ path('shop') }}/{{ playerid_value }}-paypal" class="payement_mode_card">
+            <h4>Paypal</h4>
+            <img src="{{ asset('img/shop/paypal.png') }}" alt="">
+        </a>
+
+        <a href="{{ path('shop') }}/{{ playerid_value }}-paysafecard" class="payement_mode_card">
+            <h4>Paysafecard</h4>
+            <img src="{{ asset('img/shop/paysafecard.png') }}" alt="">
+        </a>
+
+        <a href="{{ path('shop') }}/{{ playerid_value }}-stripe" class="payement_mode_card">
+            <h4>Stripe</h4>
+            <img src="{{ asset('img/shop/stripe.png') }}" alt="">
+        </a>
+
+    </div>
+
+{% endblock %}

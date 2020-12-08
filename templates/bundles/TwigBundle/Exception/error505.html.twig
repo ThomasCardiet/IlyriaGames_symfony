@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset("css/error.css") }}" />
+{% endblock %}
+
+{% block title %}Page non trouvée{% endblock %}
+
+
+{% block body %}
+
+    <div class="block">
+        <h1>Désolé, une erreur est survenue!</h1>
+        <h2>Message d'erreur: <span class="error_text">{{ status_text }}</span></h2>
+        <p class="error_type">Type d'erreur: {{ status_code }}</p>
+
+        <a class="button" href="{{ path('accueil') }}">Revenir à l'Accueil</a>
+    </div>
+
+{% endblock %}

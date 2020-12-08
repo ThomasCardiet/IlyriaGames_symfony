@@ -1,0 +1,1079 @@
+main {
+    width: 80%;
+    margin: 420px auto 0 auto;
+}
+
+/* SECTION ALERT MSG */
+
+.alert_msg {
+    width: 100%;
+    margin: auto;
+    font-family: "Zilla Slab", sans-serif;
+    color: white;
+}
+
+.alert_msg h3 {
+    font-size: 1.8em;
+}
+
+.alert_msg p {
+    font-size: 1.2em;
+}
+
+.alert_msg_error {
+    background-color: #FF3E3E;
+    padding: 15px 0 15px 3%;
+}
+.alert_msg_success {
+    background-color: #6FD46F;
+    padding: 15px 0 15px 3%;
+}
+
+
+/* TOP CONTENT */
+
+.main_header {
+    height: 140px;
+    position: relative;
+    margin-top: 120px;
+    background-color: white;
+}
+
+.main_header_info {
+    padding: 1%;
+    display: flex;
+    position: absolute;
+    top: -93px;
+}
+
+.main_header_img {
+    background-color: white;
+    padding: 3%;
+    border: solid 1px #707070;
+    width: 100%;
+}
+
+
+.main_header_info_text h1 {
+    color: #828181;
+    font-weight: bold;
+    font-family: 'Roboto Light', sans-serif;
+    font-size: 40px;
+    margin-bottom: -5px;
+}
+
+.main_header_rank h2 {
+    color: white;
+    font-weight: bold;
+    font-family: 'Roboto Light', sans-serif;
+    font-size: 30px;
+    text-align: center;
+    padding: 3%;
+}
+
+.main_header_title {
+    color: #FF3E3E;
+    font-size: 25px;
+    font-family: 'Roboto Light', sans-serif;
+    font-weight: bold;
+}
+
+.main_header_info_text {
+    margin-left: 30px;
+}
+
+.main_header_info_text p {
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* BUTTON */
+
+.main_header_button {
+    position: absolute;
+    right: 0;
+    top: -78px;
+}
+
+.main_header_button a > i {
+    color: white;
+    font-size: 4em;
+    padding: 8px;
+}
+
+.main_header_button a > i:hover {
+    color: #FF3E3E;
+    cursor: pointer;
+}
+
+.btn {
+    float: right;
+    padding: 8px 20px;
+    border-radius: 0;
+    overflow: hidden;
+    position: relative;
+    border: solid 5px #FF3E3E;
+    background-color: white;
+    font-size: 2.5em;
+    color: #FF3E3E;
+    font-weight: bold;
+    display: block;
+    text-decoration: none;
+}
+
+.btn::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+            120deg,
+            transparent,
+            #e51818,
+            transparent
+    );
+    transform: translateX(-100%);
+    transition: 0.6s;
+}
+
+.btn:hover {
+    background: rgba(255, 255, 255, 0.38);
+    box-shadow: 0 0 20px 10px hsla(54, 23%, 26%, 0.5);
+    cursor: pointer;
+    transition: 0.2s;
+    color: white;
+}
+
+.btn:hover::before {
+    transform: translateX(100%);
+}
+
+/* BOT CONTENT */
+
+.confirm_background {
+  background-color: white;
+  border-radius: 10px;
+  width: 60%;
+  margin: auto;
+}
+
+.confirm_text {
+  text-align: center;
+  font-family: "bodega", arial, sans-serif;
+  font-size: 2em;
+  padding: 3%;
+}
+
+.contener {
+    width: 80%;
+    margin: auto;
+}
+
+.flex {
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+.flex a .settings_button {
+    font-size: 3em;
+    color: #FFA359;
+}
+
+.flex a {
+    text-decoration: none;
+    float: right;
+    width: 10%;
+}
+
+.button {
+    color: white;
+    font-family: "bodega", arial, sans-serif;
+    font-size: 1.5em;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.button:hover{
+    background-color: #FE8320;
+    cursor: pointer;
+}
+
+.mail_verify {
+  display: flex;
+}
+
+.mail_form {
+  margin-top: 25px;
+}
+
+.button_mail {
+    border-radius: 5px;
+    background-color: white;
+    border: solid 1px grey;
+    color: black;
+    font-family: "bodega", arial, sans-serif;
+    font-size: 1.2em;
+    text-align: center;
+    height: 33px;
+    width: 50%;
+}
+
+.button_mail:hover{
+    background-color: #d34836;
+    cursor: pointer;
+}
+
+.text {
+  height: 30px;
+  font-family: "bodega", arial, sans-serif;
+  background-color: white;
+  border: solid 1px #A7A5A4;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 1.2em;
+  text-align: center;
+  margin-left: 5%;
+}
+
+.sous_menu > ul{
+  display:flex;
+}
+
+.sous_menu > ul li{
+  width:100%;
+  text-align:center;
+  text-decoration: none;
+}
+
+.sous_menu > ul li p{
+  display:block;
+  background:#EFEFEF;
+  color: #FF3E3E;
+  padding:8px;
+  text-decoration:none;
+  transition:.5s;
+  font-size: 2.2em;
+  font-family: "bodega", arial, sans-serif;
+}
+
+.btn-menu.cliqued {
+  background-color: #FF3E3E;
+    color: white;
+}
+
+.sous_menu > ul li p:hover{
+  background: #FF3E3E;
+  color:white;
+  cursor: pointer;
+}
+
+.sous_menu > ul, .sous_menu > ul li {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  list-style: none;
+}
+
+#infos, #friends {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.content-menu {
+    margin-top: -35px;
+    background-color: white;
+    font-family: "bodega", arial, sans-serif;
+}
+
+#friends {
+    padding: 1%;
+}
+
+#friends > div {
+    margin: auto;
+}
+
+/* INFOS CONTENT */
+
+#infos {
+    padding: 1%;
+}
+
+#infos h2 {
+    color: #FF3E3E;
+    font-size: 2em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+.card {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.card_center_verticale_line {
+    border-left: 2px solid #afafaf;
+    display: inline-block;
+    margin: 0 20px;
+}
+
+.card_text_block > h3 {
+    color: grey;
+    font-size: 2em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+.card_text_block > p {
+    margin-top: -30px;
+    color: #FF3E3E;
+    font-size: 1.3em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+/* STATS SECTION */
+#stats {
+    margin-top: -65px;
+    padding: 40px 0;
+}
+
+#stats > h2 {
+    color: #FF3E3E;
+    font-size: 2em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+    /* GRAPHS */
+
+.stats_graphs {
+    padding-top: 20px;
+    display: flex;
+    width: 90%;
+    margin: auto;
+}
+
+.stats_graphs > div {
+    padding: 20px 0;
+    border: var(--grey) solid 1px;
+}
+
+.stats_graphs canvas {
+    width: 300%;
+}
+
+.stats_graphs h3 {
+    text-align: center;
+    font-family: 'Lobster',sans-serif;
+    width: 50%;
+    display: block;
+    background-color: var(--red);
+    padding: 5px 0;
+    color: white;
+    font-size: 2em;
+    margin: 0 auto 20px auto;
+}
+
+    /* TABLES */
+
+.stats_tables {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: auto;
+    justify-content: space-between;
+}
+
+.table_card {
+    width: calc( (100% - 8%) / 3);;
+    border: var(--grey) solid 1px;
+    padding: 30px 0;
+    margin-bottom: 20px;
+}
+
+.table_card table {
+    color: var(--grey);
+    font-family: "Zilla Slab", sans-serif;
+    font-size: 1.3em;
+    width: 90%;
+    margin: auto;
+    border-collapse: collapse;
+}
+
+.table_card .text_align_right {
+    text-align: right;
+    border-left: var(--grey) solid 1px;
+}
+
+
+.table_card h3 {
+    text-align: center;
+    font-family: 'Lobster',sans-serif;
+    width: 50%;
+    display: block;
+    background-color: var(--red);
+    padding: 5px 0;
+    color: white;
+    font-size: 2em;
+    margin: 0 auto 40px auto;
+}
+
+
+/* COLLAPSE ANIM */
+
+.red {
+    color: #FF3E3E;
+}
+
+.green {
+    color: #65cd65;
+}
+
+.collapsible {
+    margin-top: 15px;
+    background: transparent;
+    color: grey;
+    font-size: 2em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    border-bottom: #FF3E3E solid 2px;
+}
+
+.collapsible i {
+    font-size: 0.8em;
+}
+
+.collapsible:hover:after {
+    color: #FF3E3E;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.collapsible:after {
+    content: '\002B';
+    color: grey;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2212";
+}
+
+.email_option_view {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    font-family: 'Roboto', sans-serif;
+    background: transparent;
+}
+
+.email_option_view > h3 {
+    font-size: 1.4em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+/* TEXT INPUTS ANIMATIONS */
+
+.text_input_box {
+    position: relative;
+    color: #FF3E3E;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.text_input_box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1em;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #FF3E3E;
+    outline: none;
+    background: transparent;
+    color: grey;
+}
+
+.text_input_box label {
+    position: absolute;
+    top:0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 1.2em;
+    pointer-events: none;
+    transition: .5s;
+    font-weight: bold;
+}
+
+.text_input_box input:focus ~ label,
+.text_input_box input:valid ~ label{
+    top: -30px;
+    left: 0;
+    color: #FF3E3E;
+    font-size: 1em;
+}
+
+.btn_sendmail {
+    padding: 8px 20px;
+    border-radius: 0;
+    overflow: hidden;
+    position: relative;
+    border: solid 2px #FF3E3E;
+    background-color: white;
+    font-size: 1.2em;
+    color: #FF3E3E;
+    font-weight: bold;
+    display: block;
+    text-decoration: none;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.btn_sendmail:hover {
+    cursor: pointer;
+    transition: 0.2s;
+    border-radius: 10px 0 10px 0;
+    font-size: 1.3em;
+}
+
+/* SEARCH SECTION */
+
+.error_msg {
+    background-color: #FF3E3E;
+    padding: 5px 0 20px 2%;
+    width: 70%;
+    color: white;
+    font-family: "Zilla Slab Medium", sans-serif;
+    margin: 0 auto 40px auto;
+}
+
+.error_msg > h3 {
+    font-size: 1.8em;
+    margin-bottom: 0;
+}
+
+.error_msg > p {
+    font-size: 1.2em;
+}
+
+.account_search > form {
+    display: flex;
+    width: 70%;
+    margin: auto;
+}
+
+.account_search > form > label {
+    background: white;
+    padding: 15px 0 15px 1.5%;
+    width: 60%;
+}
+
+.account_search > form > label > i {
+    font-size: 2.5em;
+    color: #707070;
+}
+
+.account_search > form > label > input {
+    margin-left: 10px;
+    border: none;
+    outline: none;
+    font-size: 2.5em;
+    color: rgb(112, 112, 112);
+    width: 60%;
+}
+
+.account_search > form > label > input::placeholder {
+    color: rgba(112, 112, 112, 0.29);
+}
+
+.account_search > form > button {
+    outline: none;
+    background-color: white;
+    font-size: 3em;
+    color: #707070;
+    padding: 0 0 0 0;
+    margin: 0 0.5% 0 0.5%;
+    font-family: "Zilla Slab Medium", sans-serif;
+    border: white 2px solid;
+    text-align: center;
+    width: 10%;
+}
+
+.account_search > form > button:hover, .account_search > form > a:hover {
+    cursor: pointer;
+    border: #FF3E3E 2px solid;
+}
+
+.account_search > form > a {
+    display: inline-block;
+    text-decoration: none;
+    color: #FF3E3E;
+    font-family: 'Lobster', sans-serif;
+    background-color: white;
+    font-size: 3em;
+    padding: 8px 0 0 0;
+    border: white 2px solid;
+    width: 30%;
+    text-align: center;
+}
+
+  /* PLAYER LIST SECTION */
+
+.accounts_list {
+    width: 70%;
+    margin: 20px auto 0 auto;
+}
+
+.accounts_list > p {
+    font-family: "Zilla Slab", sans-serif;
+    font-size: 1.5em;
+    margin-bottom: 0;
+    background-color: rgba(255, 62, 62, 0.3);
+    display: inline-block;
+    padding: 2px 1% 2px 01%;
+    color: white;
+}
+
+.accounts_list table {
+    font-family: "Zilla Slab", sans-serif;
+    text-align: center;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: white;
+}
+
+.accounts_list table td {
+    height: 80px;
+}
+
+.accounts_list table td.on_line {
+    color: #6FD46F;
+}
+
+.accounts_list table td.off_line {
+    color: #FF3E3E;
+}
+
+.accounts_list .table_head {
+    background: #d34836;
+    color: white;
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+.accounts_list .table_content:nth-child(odd){
+    background-color: rgba(163, 163, 163, 0.26);
+}
+
+.accounts_list .table_content{
+    color: #707070;
+    font-size: 1.5em;
+    font-family: "Zilla Slab", sans-serif;
+}
+
+.accounts_list .table_content:hover{
+    background-color: #FE8320;
+    cursor: pointer;
+}
+
+/* RESPONSIVE */
+
+/* IPAD ROTATE */
+
+@media screen and (max-width: 1366px) {
+
+    main {
+        width: 100%;
+        margin: 400px auto 0 auto;
+    }
+
+    main.sticky {
+        margin: 350px auto 0 auto;
+    }
+
+    .account_search > form {
+        width: 90%;
+    }
+
+    /* STATS SECTION */
+    #stats {
+        margin-top: -65px;
+        padding: 40px 0;
+    }
+
+    #stats > h2 {
+        color: #FF3E3E;
+        font-size: 2em;
+        font-family: 'Roboto', sans-serif;
+        font-weight: bold;
+        margin-left: 10px;
+    }
+
+    /* GRAPHS */
+
+    .stats_graphs canvas {
+        width: 150.5%;
+    }
+
+    /* PLAYER LIST SECTION */
+
+    .accounts_list {
+        width: 90%;
+    }
+
+}
+
+/* MOBILE ROTATE */
+
+@media screen and (max-width: 812px) {
+
+    main {
+        width: 100%;
+        margin: 300px auto 0 auto;
+    }
+
+    /* BUTTON */
+
+    .main_header_button {
+        top: -58px;
+    }
+
+    .main_header_button a > i {
+        font-size: 2.6em;
+    }
+
+    .btn {
+        font-size: 1.4em;
+    }
+
+    main.sticky {
+        margin: 250px auto 0 auto;
+    }
+
+    /* STATS SECTION */
+
+    .table_card {
+        width: calc( (100% - 8%) / 2);
+    }
+
+    .stats_graphs h3 {
+        font-size: 1.5em;
+    }
+
+    .stats_tables h3 {
+        font-size: 1.5em;
+    }
+
+
+    .stats_graphs canvas {
+        width: 107.5%;
+    }
+
+    /* SEARCH SECTION */
+
+    .account_search > form > label > i {
+        font-size: 2em;
+    }
+
+    .account_search > form > label > input {
+        font-size: 2em;
+    }
+
+    .account_search > form > button {
+        font-size: 2.5em;
+    }
+
+    .account_search > form > a {
+        font-size: 2.2em;
+        padding: 15px 0 0 0;
+    }
+
+}
+
+/* IPAD */
+
+@media screen and (max-width: 768px) {
+
+    main {
+        width: 100%;
+        margin: 190px auto 0 auto;
+    }
+
+    /* STATS SECTION */
+
+    .stats_graphs {
+        display: block;
+    }
+
+    /* SEARCH SECTION */
+
+    .account_search > form > a {
+        padding: 10px 0 0 0;
+    }
+
+    .table_head {
+        font-size: 1.6em;
+    }
+
+    .table_content{
+        font-size: 1.3em;
+    }
+}
+
+/* MOBILE */
+
+@media screen and (max-width: 414px) {
+
+    main {
+        width: 100%;
+        margin: 150px 0 0 0;
+    }
+
+    /* HEADER TOP */
+
+    .main_header {
+        height: 153px;
+        margin-top: 100px;
+    }
+
+    .main_header_info {
+        padding: 2%;
+        top: -90px;
+    }
+
+    .main_header_info_text {
+        width: 70%;
+    }
+
+    .main_header_info_text h1 {
+        font-size: 40px;
+        margin-bottom: -5px;
+    }
+
+    .main_header_rank h2 {
+        font-size: 25px;
+        padding: 3%;
+    }
+
+    .main_header_sign_up {
+        position: absolute;
+        bottom: 0;
+        text-align: center;
+        width: 100%;
+        font-size: 20px;
+        font-family: "Zilla Slab", sans-serif;
+    }
+
+    .main_header_title {
+        font-size: 30px;
+    }
+
+    .main_header_info_text {
+        margin-left: 30px;
+    }
+
+        /* BUTTON */
+
+        .main_header_button {
+            position: unset;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+        }
+
+        .main_header_button .btn {
+            width: 100%;
+            padding: 8px 0 0 0;
+            text-align: center;
+            border: solid 2px var(--red);
+            font-size: 2em;
+        }
+
+        .main_header_button a i {
+            font-size: 2.5em;
+            padding: 10px;
+            background-color: white;
+            color: var(--red);
+            margin-left: 8px;
+        }
+
+    /* MENU */
+
+    .sous_menu > ul{
+        margin-bottom: -25px;
+    }
+
+    .sous_menu > ul li{
+        width:100%;
+    }
+
+    .sous_menu > ul li p{
+        font-size: 1.6em;
+    }
+
+    /* INFORMATIONS SECTION */
+
+    #friends {
+        padding: 15px 2%;
+    }
+
+    /* INFOS CONTENT */
+
+    #infos {
+        padding: 2%;
+    }
+
+    #infos h2 {
+        font-size: 1.5em;
+    }
+
+    .card {
+        display: block;
+        text-align: center;
+    }
+
+    .card_center_verticale_line {
+        border-left: 2px solid #afafaf;
+        display: inline-block;
+        margin: 0 20px;
+    }
+
+    .card_text_block > h3 {
+        color: grey;
+        font-size: 2em;
+        font-family: 'Roboto', sans-serif;
+        font-weight: bold;
+    }
+
+    .card_text_block > p {
+        margin-top: -30px;
+        color: #FF3E3E;
+        font-size: 1.3em;
+        font-family: 'Roboto', sans-serif;
+        font-weight: bold;
+    }
+
+
+
+
+    /* STATS SECTION */
+
+    .stats_tables {
+        display: block;
+    }
+
+    .table_card {
+        width: 100%;
+    }
+
+
+
+
+    /* SEARCH SECTION */
+
+    .error_msg {
+        padding: 10px 0 20px 0;
+        width: 100%;
+        margin: 0 auto 20px auto;
+    }
+
+    .error_msg > h3, .error_msg > p {
+        font-size: 1.2em;
+        width: 90%;
+        margin: auto;
+    }
+
+    /* SEARCH FORM */
+
+    .account_search > form {
+        display: block;
+        width: 100%;
+    }
+
+    .account_search > form > label {
+        padding: 10px 0 10px 0;
+        width: 100%;
+        text-align: center;
+        display: block;
+    }
+
+    .account_search > form > label > i {
+        font-size: 2em;
+    }
+
+    .account_search > form > label > input {
+        font-size: 1.8em;
+        width: 60%;
+        margin: auto;
+    }
+
+    /* SEARCH FORM BOTTOM */
+
+    .account_search > form > div {
+        margin-top: 8px;
+        width: 100%;
+    }
+
+    .account_search > form > div > button {
+        font-size: 2.3em;
+        margin: 0 0 0 1.5%;
+        border: none;
+        float: right;
+        width: 18%;
+    }
+
+    .account_search > form > div > a {
+        display: inline-block;
+        text-decoration: none;
+        color: #FF3E3E;
+        font-family: 'Lobster', sans-serif;
+        background-color: white;
+        font-size: 2.2em;
+        padding: 0;
+        border: none;
+        width: 70%;
+        text-align: center;
+    }
+
+    /* PLAYER LIST SECTION */
+
+    .responsive_hide {
+        display: none;
+    }
+
+    .accounts_list {
+        width: 100%;
+        margin: 0;
+    }
+
+    .table_head {
+        text-align: center;
+    }
+
+    .table_content  {
+        font-size: 1.2em;
+    }
+
+    footer {
+        top: 80%
+    }
+
+}

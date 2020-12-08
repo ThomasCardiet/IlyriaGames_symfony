@@ -1,0 +1,360 @@
+/* NOTIF ICON */
+
+.notif_button {
+    display: inline-flex;
+    justify-content: space-between;
+    font-family: "Lobster", sans-serif;
+    margin-right: 8px;
+    color: white;
+}
+
+.notif_button.active {
+    color: var(--red);
+}
+
+.notif_button:hover {
+    filter: contrast(200%);
+}
+
+.notif_button_icon {
+    font-size: 4em;
+}
+
+.notif_button:hover {
+    cursor: pointer;
+}
+
+.notif_button_text {
+    text-align: center;
+    margin: 8px 0 0 0;
+    font-size: 1.8em;
+}
+
+/* NOTIF CONTENT */
+
+.notifs {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(100, 100, 100, 0.6);
+}
+
+.notifs_close {
+    position: absolute;
+    right: -40px;
+    top: -10px;
+    color: white;
+    font-size: 3em;
+}
+
+.notifs_close:hover {
+    color: var(--orange);
+    cursor: pointer;
+}
+
+.notifs_top, .notifs_bot {
+    width: 50%;
+    margin: auto;
+}
+
+.notifs_top {
+    margin-top: 350px;
+    position: relative;
+    padding: 10px 0;
+    background-color: white;
+}
+
+/* TOP NOTIFS */
+
+.notifs_top_form {
+    display: flex;
+    width: 100%;
+    margin: auto;
+}
+
+.notifs_top_form > label {
+    background-color: var(--orange);
+    padding: 15px 0 15px 1.5%;
+    width: 30%;
+}
+
+.notifs_top_form > label > i {
+    font-size: 1.8em;
+    color: white;
+}
+
+.notifs_top_form > label > input {
+    margin-left: 10px;
+    border: none;
+    outline: none;
+    font-size: 1.5em;
+    color: white;
+    width: 60%;
+    background: transparent;
+}
+
+.notifs_top_form > label > input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.notifs_top_form > button {
+    outline: none;
+    background-color: var(--orange);
+    color: white;
+    padding: 0 0 0 0;
+    text-align: center;
+    border: none;
+    font-family: 'Zilla Slab', sans-serif;
+}
+
+.notifs_top_form > #btn-search {
+    font-size: 2.5em;
+    margin: 0 1% 0 0.5%;
+    width: 10%;
+}
+
+.notifs_top_form > button:hover {
+    cursor: pointer;
+    filter: contrast(200%);
+}
+
+.notifs_top_form > #btn-read {
+    font-size: 1.6em;
+    margin: 0 0.5% 0 1%;
+    width: 58%;
+}
+
+/* BOT NOTIFS */
+
+.notifs_bot{
+    margin-top: -20px;
+}
+
+.notifs_bot_buttons {
+    display:flex;
+    margin-bottom: -30px;
+}
+
+.notifs_bot_buttons li{
+    width:25%;
+    text-align:center;
+    text-decoration: none;
+}
+
+.notifs_bot_buttons li p{
+    display:block;
+    background:#EFEFEF;
+    color: var(--grey);
+    padding:8px;
+    text-decoration:none;
+    transition:.5s;
+    font-size: 1.8em;
+    font-family: 'Zilla Slab', sans-serif;
+    font-weight: bold;
+}
+
+.notifs_bot_buttons li p.cliqued {
+    background-color: var(--orange);
+    color: white;
+}
+
+.notifs_bot_buttons li p:hover{
+    background: var(--orange);
+    color:white;
+    cursor: pointer;
+}
+
+ul, li {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    list-style: none;
+}
+
+    /* TABLE CONTENT */
+
+.notifs_bot_content {
+    background-color: white;
+    padding: 20px 0;
+}
+
+.notifs_bot_content table {
+    font-family: "Zilla Slab", sans-serif;
+    text-align: center;
+    border-collapse: collapse;
+    width: 95%;
+    background-color: white;
+    margin: auto;
+}
+
+.notifs_bot_content table td {
+    height: 80px;
+    border: grey 1px solid;
+}
+
+.notifs_bot_content .table_head {
+    color: var(--grey);
+    font-size: 1.8em;
+    font-weight: bold;
+    font-family: 'Lobster', sans-serif;
+}
+
+.notifs_bot_content .table_content:nth-child(odd){
+    background-color: rgba(163, 163, 163, 0.26);
+}
+
+.notifs_bot_content .table_content{
+    color: #707070;
+    font-size: 1.5em;
+    font-family: "Zilla Slab", sans-serif;
+}
+
+.notifs_bot_content .table_content_btn {
+    background-color: var(--orange);
+}
+
+.notifs_bot_content .table_content_btn:hover {
+    filter: contrast(200%);
+}
+
+.notifs_bot_content .table_content_btn a {
+    text-decoration: none;
+    color: white;
+}
+
+/* RESPONSIVE */
+
+/* IPAD ROTATE */
+
+@media screen and (max-width: 1024px) {
+
+    .notifs_top, .notifs_bot {
+        width: 85%;
+        margin: auto;
+    }
+
+    .notifs_top {
+        margin-top: 300px;
+    }
+
+}
+
+/* MOBILE ROTATE */
+
+@media screen and (max-width: 812px) {
+
+    .notif_button_icon {
+        font-size: 2.6em;
+    }
+
+}
+
+/* IPAD */
+
+@media screen and (max-width: 768px) {
+
+    .notifs_top {
+        margin-top: 160px;
+    }
+
+}
+
+/* MOBILE */
+
+@media screen and (max-width: 414px) {
+
+    .notif_button {
+        color: var(--green);
+        background-color: white;
+        margin-left: 8px;
+    }
+
+    .notif_button_icon {
+        font-size: 2.5em;
+        padding: 10px;
+    }
+
+    .notif_button_text {
+        font-size: 1.5em;
+    }
+
+
+
+
+
+    /* NOTIF CONTENT */
+
+    .notifs_close {
+        right: 0;
+        top: -45px;
+    }
+
+    .notifs_top, .notifs_bot {
+        width: 96%;
+    }
+
+    .notifs_top {
+        margin-top: 130px;
+    }
+
+    /* TOP NOTIFS */
+
+    .notifs_top_form {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .notifs_top_form > label {
+        background-color: var(--orange);
+        padding: 8px;
+        width: 74%;
+        margin: auto;
+    }
+
+    .notifs_top_form > label > i {
+        font-size: 1.6em;
+    }
+
+    .notifs_top_form > label > input {
+        font-size: 1.6em;
+    }
+
+    .notifs_top_form > label > input {
+        margin-left: 0;
+    }
+
+    .notifs_top_form > #btn-search {
+        font-size: 2.45em;
+        width: 19%;
+        margin: auto;
+    }
+
+    .notifs_top_form > #btn-read {
+        font-size: 1.6em;
+        width: 98.5%;
+        margin: 0 auto 5px auto;
+    }
+
+    /* BOT NOTIFS */
+
+    .notifs_bot_buttons li{
+        width:100%;
+    }
+
+    /* TABLE CONTENT */
+
+    .notifs_bot_content table {
+        width: 96%;
+    }
+
+    .notifs_bot_content .table_head {
+        font-size: 1.5em;
+    }
+
+    .notifs_bot_content .table_content{
+        font-size: 1.2em;
+    }
+}

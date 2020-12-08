@@ -1,0 +1,862 @@
+html{
+    margin:0;
+    background: url("../img/background_1.png") no-repeat center fixed;
+    background-size: cover;
+    padding-bottom: 750px;
+}
+
+main {
+    width: 80%;
+    margin: 400px auto 0 auto;
+}
+
+/* SECTION INFORMATION */
+
+.informations {
+    background-color: #6FD46F;
+    text-align: center;
+    color: white;
+    font-size: 2.2em;
+    font-family: "Zilla Slab Medium", sans-serif;
+    padding: 1.5%;
+    margin-bottom: 80px;
+}
+
+.content_title {
+    background-color: rgba(114, 114, 114, 0.58);
+    display: inline-block;
+    padding: 0.8%;
+    font-family: "Zilla Slab", sans-serif;
+    color: white;
+    font-size: 2em;
+}
+
+/* SECTION CONTENT */
+
+.content {
+    background-color: white;
+    padding: 20px 4% 100px 4%;
+    position: relative;
+}
+
+.progression {
+    display: flex;
+}
+
+.progression > a {
+    color: white;
+    font-family: "Zilla Slab", sans-serif;
+    font-size: 1.5em;
+    background-color: #8B8B8B;
+    padding: 1%;
+    width: 100%;
+    text-align: center;
+    border: white 1px solid;
+    text-decoration: none;
+}
+
+.progression > a > i {
+    display: none;
+}
+
+.progression > a.actual {
+    background-color: #FF3E3E;
+}
+
+.progression > a.passed {
+    background-color: #6FD46F;
+}
+
+.progression > a.passed > i {
+    display: inline-block;
+}
+
+.content > h3 {
+    font-family: "Zilla Slab", sans-serif;
+    color: #484848;
+    font-size: 1.8em;
+}
+
+.security_text {
+    position: absolute;
+    bottom: -5px;
+    left: 1%;
+    color: #6FD46F;
+    font-size: 1.2em;
+    font-family: "Zilla Slab", sans-serif;
+}
+
+.error_block {
+    background-color: #FF3E3E;
+    color: white;
+    font-size: 1.2em;
+    font-family: "Zilla Slab", sans-serif;
+    padding: 2px 2% 2px 2%;
+    margin-bottom: 50px;
+}
+
+.error_block > h4 {
+    font-size: 1.3em;
+}
+
+.error_block > p {
+    margin-top: -30px;
+}
+
+    /* STEP_0 */
+
+.purchase_owner_form {
+    width: 40%;
+    margin: auto;
+}
+
+.purchase_owner_form label {
+    font-size: 2em;
+    font-family: "Zilla Slab", sans-serif;
+    color: #484848;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-bottom: 20px;
+}
+
+.purchase_owner_form label:hover {
+    color: #FF3E3E;
+}
+
+.purchase_owner_form input[type=radio]{
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.purchase_owner_form input[type=radio]:focus {
+    background: none;
+}
+
+.purchase_owner_form_player_name {
+    margin-bottom: 20px;
+    padding: 0.6%;
+    width: 100%;
+    font-size: 1.6em;
+    font-family: "Zilla Slab", sans-serif;
+    color: #484848;
+}
+
+.next_step_button {
+    width: 90%;
+    border: none;
+    background-color: #FF3E3E;
+    color: white;
+    font-size: 3em;
+    font-family: "Zilla Slab", sans-serif;
+    display: block;
+    margin: auto;
+
+}
+
+.next_step_button:hover {
+    background-color: #d71a1a;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+    /* STEP_1 */
+
+.payement_contents {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.payement_mode_card {
+     display: flex;
+     justify-content: space-between;
+     font-size: 2em;
+     font-family: "Zilla Slab", sans-serif;
+     color: #484848;
+     width: 43%;
+     margin: 30px auto 0 auto;
+     border: solid 2px #707070;
+     padding: 0 2% 0 2%;
+    text-decoration: none;
+ }
+
+.payement_mode_card:hover {
+    border-color: #FF3E3E;
+    background-color: rgba(255, 62, 62, 0.11);
+    cursor: pointer;
+}
+
+.payement_mode_card > img {
+    width: 22vh;
+    object-fit: contain;
+}
+
+/* STEP_2 */
+
+.purchase_offer_form {
+    margin-bottom: 20px;
+    padding: 0.6%;
+    width: 100%;
+    font-size: 1.6em;
+    font-family: "Zilla Slab", sans-serif;
+    color: #484848;
+}
+
+.offers_content {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.offer_card {
+    background: url("../img/shop/dons.png") no-repeat center;
+    background-size: 14vh;
+    text-align: center;
+    border: solid 2px #707070;
+    width: 15%;
+    margin: auto;
+    position: relative;
+}
+
+.offer_card i {
+    display: none;
+    position: absolute;
+    left: -3.8%;
+    top: -25px;
+}
+
+
+.offer_card.cliqued {
+    border-color: #FF3E3E;
+    background-color: rgba(255, 62, 62, 0.17);
+    cursor: pointer;
+}
+
+.offer_card.cliqued i {
+    display: inline-block;
+}
+
+.offer_card:hover {
+    border-color: #FF3E3E;
+    background-color: rgba(255, 62, 62, 0.17);
+    cursor: pointer;
+}
+
+.offer_card_title {
+    font-family: 'Lobster', sans-serif;
+    font-size: 1.7em;
+}
+
+.offer_card_bonus {
+    font-family: 'Zilla Slab', sans-serif;
+    font-size: 1em;
+    color: white;
+    background-color: #6FD46F;
+    padding: 0 3% 0 3%;
+}
+
+.offer_card_price {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.personal_offer_block {
+    width: 65%;
+    display: flex;
+    margin: 40px auto 40px auto;
+}
+
+.personal_offer_block > .offer_card {
+    min-width: 25%;
+}
+
+.purchase_offer_form_value_block {
+    margin-top: 40px;
+    width: 45%;
+}
+
+.purchase_offer_form_value_block > label {
+    font-size: 1em;
+    font-family: "Zilla Slab", sans-serif;
+}
+
+.purchase_offer_form_value {
+    font-size: 1em;
+    padding: 0 0 0 2%;
+    font-family: "Zilla Slab", sans-serif;
+    vertical-align: middle;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.purchase_form_recap {
+    font-family: "Zilla Slab", sans-serif;
+    font-size: 0.8em;
+    text-align: center;
+    margin: 40px 0 -2px 0;
+}
+
+.purchase_offer_form .next_step_button {
+    width: 42%;
+}
+
+/* SETP_3 */
+
+.recap_block {
+    background-color: rgb(186, 184, 184);
+    color: white;
+    padding: 5px 1% 20px 1%;
+    font-size: 1.6em;
+    font-family: "Zilla Slab Medium", sans-serif;
+}
+
+.cgu_block {
+    padding: 5px 1% 2px 1%;
+    text-align: center;
+    background-color: #FF9436;
+    color: white;
+    font-size: 1.5em;
+    font-family: "Zilla Slab Medium", sans-serif;
+    margin: 20px 0 20px 0;
+}
+
+.cgu_block a {
+    text-decoration: none;
+}
+
+.cgu_block a:hover {
+    color: #de2525;
+}
+
+.red {
+    color: #FF3E3E;
+    font-family: "Lobster", sans-serif;
+}
+
+.green {
+    color: #4fff4f;
+    font-family: "Lobster", sans-serif;
+}
+
+.payment_btn {
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 15% 10px 15%;
+    display: block;
+    margin : auto;
+}
+
+.paypal_btn {
+    background-color: #FFC43A;
+}
+
+.stripe_btn {
+    background-color: #add3ff;
+}
+
+.payment_btn > img {
+    max-width: 14vh;
+    object-fit: contain;
+}
+
+.paypal_btn:hover {
+    background-color: #ffb200;
+    cursor: pointer;
+}
+
+.stripe_btn:hover {
+    background-color: #84b7f3;
+    cursor: pointer;
+}
+
+/* WARNING BLOCK */
+
+.payment_warning_block {
+    background-color: #FF9436;
+    color: white;
+    padding: 10px 2% 10px 2%;
+    font-family: "Zilla Slab Medium", sans-serif;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+/* STEP_4 */
+
+.validation_block .validation_success_title {
+    color: #6FD46F;
+    border: solid 2px #6FD46F;
+    font-size: 2em;
+    text-align: center;
+    padding: 20px 0 20px 0;
+}
+
+.validation_block .validation_error_title > i, .validation_block .validation_success_title > i {
+    font-size: 0.65em;
+}
+
+.validation_block .validation_error_title {
+    color: #FF3E3E;
+    border: solid 2px #FF3E3E;
+    font-size: 2em;
+    text-align: center;
+    padding: 20px 0 20px 0;
+}
+
+    /* SUCCESS FACTURE */
+
+.validation_facture_block {
+    width: 70%;
+    margin: auto;
+    border: solid 2px #6FD46F;
+}
+
+.validation_facture_block_top {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.validation_facture_block_top h4, .validation_facture_block_bot h4 {
+    font-family: "Zilla Slab", sans-serif;
+    font-size: 1.5em;
+}
+
+.validation_facture_block_top p, .validation_facture_block_bot p {
+    margin-top: -28px;
+    font-family: "Zilla Slab", sans-serif;
+    font-size: 1em;
+}
+
+table {
+    text-align: center;
+    border-collapse:collapse;
+    width: 90%;
+    margin: 20px auto 50px auto;
+}
+
+td {
+    text-align: center;
+    border: #707070 solid 1px;
+    padding: 15px 3% 15px 3%;
+    font-family: "Zilla Slab", sans-serif;
+}
+
+.table_validation_head {
+    font-size: 1.4em;
+}
+
+.table_validation_content {
+    font-size: 1.1em;
+}
+
+.validation_facture_block_bot {
+    width: 90%;
+    margin: auto;
+}
+
+.validation_facture_msg {
+    width: 78%;
+    font-family: "Zilla Slab", sans-serif;
+    text-align: center;
+    font-size: 1.15em;
+    margin: 30px auto 0 auto;
+}
+
+    /* PAYMENT ERROR */
+
+.validation_error_text {
+    font-family: "Zilla Slab", sans-serif;
+    color: #FF3E3E;
+    font-size: 1.5em;
+    text-align: center;
+    width: 80%;
+    margin: auto;
+    background-color: #efefef;
+    padding: 1%;
+}
+
+.validation_error_btn {
+    background-color: #FF3E3E;
+    padding: 10px 5% 10px 5%;
+    text-align: center;
+    text-decoration: none;
+    font-family: "Zilla Slab", sans-serif;
+    font-size: 2em;
+    color: white;
+    display: block;
+    width: 40%;
+    margin: 40px auto 0 auto;
+}
+
+.validation_error_btn:hover {
+    background-color: #ff1a1a;
+}
+
+/* RESPONSIVE */
+
+/* IPAD ROTATE */
+
+@media screen and (max-width: 1024px) {
+
+    main {
+        width: 95%;
+        margin: 300px auto 0 auto;
+    }
+
+    main.sticky {
+        margin: 250px auto 0 auto;
+    }
+
+    .content {
+        padding: 20px 2% 100px 2%;
+    }
+
+    .progression {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .progression > a {
+        width: 30%;
+    }
+
+    /* STEP_2 */
+    .offer_card {
+        width: 30%;
+        margin-bottom: 20px;
+    }
+
+    .personal_offer_block {
+        width: 80%;
+    }
+
+    .purchase_offer_form .next_step_button {
+        width: 70%;
+        font-size: 1.8em;
+
+    }
+}
+
+/* MOBILE ROTATE */
+
+@media screen and (max-width: 812px) {
+
+    main {
+        width: 100%;
+        margin: 220px auto 0 auto;
+    }
+
+    main.sticky {
+        margin: 170px auto 0 auto;
+    }
+
+    .informations {
+        font-size: 1.8em;
+        margin-bottom: 30px;
+    }
+
+    .progression > a {
+        font-size: 1.4em;
+        width: 31%;
+    }
+
+}
+
+/* IPAD */
+
+@media screen and (max-width: 768px) {
+
+    main {
+        margin: 150px auto 0 auto;
+    }
+
+    .personal_offer_block {
+        width: 90%;
+    }
+
+}
+
+/* MOBILE */
+
+@media screen and (max-width: 414px) {
+    main {
+        width: 100%;
+        margin-top: 73px;
+    }
+
+    /* SECTION INFORMATION */
+
+    .informations {
+        font-size: 1.8em;
+        margin-bottom: 10px;
+        padding: 10px 0;
+        width: 100%;
+    }
+
+    .informations > p {
+        width: 90%;
+        margin: auto;
+    }
+
+    .content_title {
+        width: 100%;
+        text-align: center;
+        padding: 5px 0 5px 0;
+    }
+
+    /* SECTION CONTENT */
+
+    .content {
+        background-color: white;
+        padding: 20px 0 100px 0;
+        position: relative;
+    }
+
+    .progression {
+        display: flex;
+        flex-wrap: wrap;
+        width: 95%;
+        margin: auto;
+    }
+
+    .progression > a {
+        font-size: 1.1em;
+        padding: 10px 0;
+        border: none;
+        width: 50%;
+        margin: auto;
+    }
+
+    .progression > a > i {
+        font-size: 0.5em;
+    }
+
+    .content > h3 {
+        text-align: center;
+    }
+
+    .security_text {
+        width: 100%;
+        text-align: center;
+    }
+
+    .error_block {
+        padding: 1px 3% 1px 3%;
+        width: 90%;
+        margin: 0 auto 50px auto;
+    }
+
+    /* STEP_0 */
+
+    .purchase_owner_form {
+        width: 85%;
+    }
+
+    .purchase_owner_form label {
+        font-size: 1.5em;
+    }
+
+    .purchase_owner_form input[type=radio]{
+        width: 20px;
+        height: 20px;
+    }
+
+    .purchase_owner_form_player_name {
+        padding: 0;
+        text-align: center;
+    }
+
+    .next_step_button {
+        width: 100%;
+        font-size: 2em;
+    }
+
+    /* STEP_1 */
+
+    .payement_contents {
+        display: block;
+    }
+
+    .payement_mode_card {
+        font-size: 1.5em;
+        width: 95%;
+        padding: 0;
+        margin: 15px auto 0 auto;
+    }
+
+    .payement_mode_card h4 {
+        margin-left: 10px;
+    }
+
+    .payement_mode_card > img {
+        width: 18vh;
+        margin-right: 10px;
+    }
+
+    /* STEP_2 */
+
+    .purchase_offer_form {
+        padding: 0;
+        width: 100%;
+    }
+
+    .offers_content {
+        width: 90%;
+        margin: auto;
+    }
+
+    .offer_card {
+        width: 46%;
+        margin: 0 auto 10px 0;
+    }
+
+    .offer_card_title {
+        font-size: 1.2em;
+    }
+
+    .offer_card_bonus {
+        font-size: 0.7em;
+    }
+
+    .offer_card_price {
+        font-size: 1em;
+    }
+
+    .personal_offer_block {
+        width: 90%;
+        display: block;
+    }
+
+    .personal_offer_block > .offer_card {
+        margin: 20px auto 0 auto;
+    }
+
+    .purchase_offer_form_value_block {
+        width: 100%;
+    }
+
+    .purchase_offer_form_value_block > label {
+        font-size: 0.8em;
+    }
+
+    .purchase_form_recap {
+        font-size: 0.5em;
+    }
+
+    .purchase_offer_form .next_step_button {
+        width: 90%;
+        font-size: 1.4em;
+    }
+
+    /* SETP_3 */
+
+    .recap_block {
+        width: 92%;
+        margin: auto;
+        padding: 1px 2% 10px 2%;
+        font-size: 1.2em;
+    }
+    .cgu_block {
+        width: 92%;
+        font-size: 1.2em;
+        margin: 20px auto 20px auto;
+    }
+
+    .payment_btn {
+        width: 92%;
+        border: none;
+        border-radius: 5px;
+        padding: 15px 15% 10px 15%;
+        margin : auto;
+    }
+
+    /* WARNING BLOCK */
+
+    .payment_warning_block {
+        width: 90%;
+        margin: auto;
+        font-size: 1.2em;
+    }
+
+    /* STEP_4 */
+
+    .validation_block .validation_success_title {
+        font-size: 1.2em;
+        width: 90%;
+        margin: auto;
+    }
+
+    .validation_block .validation_error_title {
+        font-size: 1.2em;
+        width: 90%;
+        margin: auto;
+    }
+
+    /* SUCCESS FACTURE */
+
+    .validation_facture_block {
+        width: 90%;
+        margin: 20px auto 0 auto;
+    }
+
+    .validation_facture_block_top h4, .validation_facture_block_bot h4 {
+        font-family: "Zilla Slab", sans-serif;
+        font-size: 1em;
+    }
+
+    .validation_facture_block_top p, .validation_facture_block_bot p {
+        margin-top: -20px;
+        font-size: 1em;
+    }
+
+    table {
+        text-align: center;
+        border-collapse:collapse;
+        width: 90%;
+        margin: 20px auto 50px auto;
+    }
+
+    td {
+        text-align: center;
+        border: #707070 solid 1px;
+        padding: 15px 1% 15px 1%;
+        font-family: "Zilla Slab", sans-serif;
+    }
+
+    .table_validation_head {
+        font-size: 0.9em;
+    }
+
+    .table_validation_content {
+        font-size: 0.8em;
+    }
+
+
+    .validation_facture_msg {
+        width: 90%;
+        font-size: 0.8em;
+        margin: 10px auto 0 auto;
+    }
+
+    /* PAYMENT ERROR */
+
+    .validation_error_text {
+        margin-top: 20px;
+        font-size: 1.1em;
+        width: 90%;
+    }
+
+    .validation_error_btn {
+        padding: 10px 0;
+        text-align: center;
+        font-size: 1.2em;
+        width: 92%;
+        margin: 20px auto 0 auto;
+    }
+
+}

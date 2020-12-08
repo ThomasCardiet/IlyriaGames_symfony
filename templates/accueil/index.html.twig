@@ -1,0 +1,208 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset("css/index.css") }}" />
+{% endblock %}
+
+{% block title %}Accueil{% endblock %}
+
+
+{% block body %}
+
+    <section class="slider">
+
+        <div class="slider_content">
+
+            <div class="slider_content_card">
+
+                <h1>Accueil</h1>
+
+                <hr class="slider_content_card_hr1">
+
+                <p class="slider_content_card_part1_desc">
+                    Bienvenue sur le serveur le plus <span>Hilarant</span>!
+                </p>
+
+                <hr class="slider_content_card_hr2">
+
+                <a class="discord" href="https://discord.gg/ZGesvRg" target="_blank">
+                    <i class="fab fa-discord"></i>
+                </a>
+
+                <p class="slider_content_card_part2_desc">
+                    Envie d'en savoir plus sur <span>IlyriaGames</span>?
+                    <br>
+                    Clique juste en dessous!
+                </p>
+
+                <a class="btn" href="">Découvrir</a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="server_state">
+        {% if nbPlayers is null %}
+
+            <h2>Hors-ligne / Maintenance</h2>
+
+        {% else %}
+
+            <h1>Il y a {{ nbPlayers }}/{{ nbMaxPlayers }} connecté(s) sur le serveur</h1>
+            <h2 class="on_line">En ligne</h2>
+
+        {% endif %}
+
+    </section>
+
+    <section class="news_informations">
+
+        <h1>Informations | Nouveautés</h1>
+
+        <hr>
+
+        {% for new in news %}
+
+            <div class="news">
+
+                <!-- NEWS LEFT -->
+                <div class="news_left">
+
+                    <div class="news_left_title">
+
+                        <div class="news_left_title_left">
+
+                            <h2>#{{ new.id }} {{ new.title }}</h2>
+
+                        </div>
+
+                        <div class="news_left_title_right">
+
+                            <p>
+                                Le {{ new.createAt | date('d/m/Y à H:i') }} par
+                                <br>
+                                <span>{{ new.owner.pseudo }}</span>
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="news_left_content">
+
+                        <p>
+                            {{ new.content }}
+                        </p>
+
+                    </div>
+
+                    <div class="news_left_comments_list collapsible_content">
+
+                        {% if app.user %}
+                            <div class="news_left_comments_new">
+                                <form method="post">
+                                    <input name="comment_news_id" value="{{ new.id }}" hidden>
+                                    <textarea type="text" name="comment_content" required></textarea>
+                                    <label>Ajouter un commentaire...</label>
+
+                                    <button type="submit" name="comment_submit">Ajouter un commentaire</button>
+                                </form>
+                            </div>
+                        {% endif %}
+
+                        {% for comment in new.newscomments %}
+
+
+                            {% set difference = date( 'now' | date() ).diff(comment.createAt) %}
+                            {% set leftDays = difference.days %}
+                            {% set leftHours = difference.h %}
+                            {% set leftMinutes = difference.i %}
+
+                            {% if leftDays > 0 and leftDays < 15 %}
+
+                                {% set create_date_text = 'il y a ' ~ leftDays ~ ' jour(s)' %}
+
+                            {% elseif leftHours > 0 %}
+
+                                {% set create_date_text = 'il y a ' ~ leftHours ~ ' heure(s)' %}
+
+                            {% elseif leftMinutes >= 0 %}
+
+                                {% set create_date_text = 'il y a ' ~ leftMinutes ~ ' minute(s)' %}
+
+                            {% else %}
+
+                                {% set create_date_text = 'le ' ~ comment.createAt|date('d/m/Y à H:i') %}
+
+                            {% endif %}
+
+                            <div class="news_left_comments_posted">
+                                <img src="https://minotar.net/helm/{{ comment.owner.pseudo }}/110.png" alt="">
+                                <div class="news_left_comments_posted_right">
+                                    <h3>{{ comment.owner.pseudo }} <span>{{ create_date_text }}</span></h3>
+                                    <p class="news_left_comments_posted_right_content">
+                                        {{ comment.content }}
+                                    </p>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                    <div class="news_left_comments">
+
+                        <div class="news_left_comments_left">
+
+                            <h3>Voir les commentaires</h3>
+
+                        </div>
+
+                        <div class="news_left_comments_right collapsible">
+
+                            <i class="fas fa-plus"></i>
+                            <i class="fas fa-times"></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- NEWS RIGHT -->
+                <div class="news_right">
+                    <img src="https://minotar.net/helm/TraXxFr/110.png" alt="">
+                    <div class="news_right_bottom">
+
+                        <div class="news_right_bottom_comments">
+
+                            <h4>
+                                {{ new.newscomments|length }}
+                                <br>
+                                <i class="far fa-comments"></i>
+                            </h4>
+
+                        </div>
+
+                        <div class="news_right_bottom_likes">
+
+                            <h4>
+                                0
+                                <br>
+                                <i class="far fa-thumbs-up"></i>
+                            </h4>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+    </section>
+
+{% endblock %}

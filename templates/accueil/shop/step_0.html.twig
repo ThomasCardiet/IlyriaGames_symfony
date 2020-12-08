@@ -1,0 +1,29 @@
+{% extends 'accueil/shop/shop_base.html.twig' %}
+
+{% block content_title %}Choisissez le destinataire{% endblock %}
+
+{% block content %}
+
+    <div class="purchase_owner_form">
+
+        <form method="post">
+
+            {% if app.user %}
+                <label class="purchase_form_choose">
+                    <input type="radio" name="self_choose" checked>
+                    Cet Article est pour moi
+                </label>
+            {% endif %}
+            <label class="purchase_form_choose">
+                <input type="radio" name="other_choose" {% if app.user is null %}checked{% endif %}>
+                Je souhaite offrir
+            </label>
+            <input name="other_choose_value" class="purchase_owner_form_player_name" type="text" placeholder="Pseudo (exemple: TraXxFr)">
+
+            <button type="submit" class="next_step_button">Etape Suivante</button>
+
+        </form>
+
+    </div>
+
+{% endblock %}

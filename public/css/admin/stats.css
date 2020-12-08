@@ -1,0 +1,71 @@
+:root {
+
+    --visits               : #00C292;
+    --members               : #FF7E62;
+    --purchases               : #7DD1F0;
+    --topics               : #F8BE52;
+}
+
+.visits {
+    background-color: var(--visits);
+}
+.members {
+    background-color: var(--members);
+}
+.purchases {
+    background-color: var(--purchases);
+}
+.topics {
+    background-color: var(--topics);
+}
+
+.stats_counts {
+    display: flex;
+    justify-content: space-around;
+}
+
+.card {
+    padding: 2%;
+    width: 100%;
+}
+.card-body {
+    display: inline-block;
+    font-family: "Roboto", sans-serif;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    width: 100%;
+}
+
+.card-bottom {
+    background-color: rgba(63, 64, 64, 0.5);
+    border-radius: 5px;
+    color: #fff;
+    padding: 2%;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+}
+
+.float-left {
+    float: left;
+    padding: 5%;
+}
+.float-right {
+    float: right;
+    padding: 5%;
+}
+.card-body h3 {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 2em;
+}
+.card-body p {
+    font-size: 16px;
+    margin-top: 0;
+}
+.card-body i {
+    font-size: 6em;
+    opacity: 0.5;
+}

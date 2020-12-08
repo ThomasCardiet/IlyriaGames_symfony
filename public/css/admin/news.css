@@ -1,0 +1,53 @@
+.news_creation, .news_deletion {
+    width: 80%;
+    margin: 0 auto 50px auto;
+}
+
+.button_news {
+    margin-top: 20px;
+    text-decoration: none;
+    border-radius:0 0 12px 12px;
+    background: white;
+    border:none;
+    font:bold 2em Verdana;
+    color:#555;
+    box-shadow:1px 1px 3px #999;
+    height: 50px;
+    width: 100%;
+}
+
+.button_news_back {
+    width: 50%;
+    margin: auto;
+}
+
+.button_news:hover{
+    background: #d34836;
+    cursor: pointer;
+    color:#fff;
+}
+
+.title_news, .content_news{
+    font:bold 2em Verdana;
+    background-color: white;
+    border: solid 1px #A7A5A4;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+}
+
+.content_news{
+    resize: vertical;
+    height: 300px;
+    margin-top: 20px;
+}
+
+.news_options{
+    font:bold 2em Verdana;
+    background-color: white;
+    border: solid 1px #A7A5A4;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}

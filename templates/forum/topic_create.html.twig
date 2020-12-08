@@ -1,0 +1,52 @@
+{% extends 'forum/forum_base.html.twig' %}
+
+{% block stylesheets_form %}
+    <link rel="stylesheet" href="{{ asset('css/forum/topic.css') }}">
+{% endblock %}
+
+{% block javascript_head %}
+{% endblock %}
+
+{% block body_form %}
+
+    {{ form_start(form) }}
+        <div class="whiteBackGround">
+            <div class="background_cat ribbon left-bottom right-top">
+                <h1 class="cat">
+                    <i class="far fa-file"></i> Nouveau Topic
+                </h1>
+            </div>
+
+            <section class="new_topic">
+
+                <div class="title-box">
+                    {{ form_row(form.title, {'label': 'Titre'}) }}
+                </div>
+
+                <div class="select_line">
+                    <div class="select-box">
+                        <select>
+                            <option value="{{ category.id }}">{{ category.name }}</option>
+                        </select>
+                        <label>Catégorie</label>
+                    </div>
+
+                    <div class="select-box">
+                        {{ form_row(form.subcategory, {'label': 'Sous-Catégorie'}) }}
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    {{ form_row(form.content, {'label': 'Contenu'}) }}
+                </div>
+
+                <button type="submit" name="ticket_submit" class="btn">
+                    Poster
+                </button>
+
+            </section>
+
+        </div>
+    {{ form_end(form) }}
+
+{% endblock %}

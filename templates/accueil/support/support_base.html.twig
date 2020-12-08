@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset("css/support.css") }}" />
+{% endblock %}
+
+{% block title %}Support{% endblock %}
+
+{% block body %}
+
+    <section class="informations">
+        <p><i class="fas fa-info-circle"></i>
+            Avant de créer un ticket, merci de vérifier <br> que ce problème n'ait pas été traité sur le forum.
+        </p>
+    </section>
+
+    <section class="help_content">
+
+        {% if app.user %}
+
+            {% block content %}{% endblock %}
+
+        {% else %}
+
+            <section class="error_connection">
+
+                <h3>
+                    <i class="fas fa-info-circle"></i> Merci de vous connecter afin d'accéder à cette page:
+                </h3>
+
+                <a href="{{ path('security_login') }}">Se connecter</a>
+
+            </section>
+
+        {% endif %}
+
+    </section>
+
+    <section class="articles_content">
+
+        <h2>Articles à la une</h2>
+
+        <div class="articles_content_block">
+
+            <div class="card">
+                <img src="{{ asset('img/rectangle.jpg') }}">
+                <div class="card_desc">
+                    <a href="#" class="card_button">Lire la suite</a>
+                    <h2>Article #</h2>
+                    <p>Comment récupérer son mot de passe</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="{{ asset('img/rectangle.jpg') }}">
+                <div class="card_desc">
+                    <a href="#" class="card_button">Lire la suite</a>
+                    <h2>Article #</h2>
+                    <p>Comment récupérer son mot de passe</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+{% endblock %}

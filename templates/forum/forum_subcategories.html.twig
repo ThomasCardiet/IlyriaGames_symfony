@@ -1,0 +1,88 @@
+{% extends 'forum/forum_base.html.twig' %}
+
+{% block stylesheets_form %}
+    <link rel="stylesheet" href="{{ asset('css/forum/forum.css') }}">
+{% endblock %}
+
+{% block body_form %}
+
+    <div class="whiteBackGround">
+
+        <div class="whiteBackGround">
+
+                <div class="background_cat ribbon left-bottom right-top">
+                    <h1 class="cat ">
+                        <a href="{{ path('forum') }}/{{ category.id }}">
+                            <i class="fas fa-folder-open"></i> {{ category.name }}
+                        </a>
+                    </h1>
+                </div>
+
+                <ol>
+
+                    {% for sub_category in sub_categories %}
+
+                        <div class="table_line">
+                            <li class="flex table_line_block">
+
+                                <div class="souscategorie">
+                                    <a href="{{ path('forum') }}/{{ category.id }}.{{ sub_category.id }}">
+                                        <h2 class="sub_cat">
+                                            <i class="fas fa-comment"></i> {{ sub_category.name }}
+                                        </h2>
+                                    </a>
+                                </div>
+
+                                <div class="table_info">
+                                    <h2>
+                                        <i class="fas fa-file-signature"></i> {{ sub_category.topics | length }}
+                                    </h2>
+                                </div>
+
+                                {% set last_topic_index = sub_category.topics | length - 1%}
+
+                                {% if last_topic_index >= 0 %}
+
+                                    <div class="last_msg">
+
+                                        <img src="https://minotar.net/helm/{{ sub_category.topics[last_topic_index].owner.username }}/64.png" alt="" class="head"/>
+
+                                        <p>
+                                            <i class="fas fa-reply-all"></i>
+
+                                            {{ sub_category.topics[last_topic_index].title }}
+
+                                            <br>de <span style="color: red; ">{{ sub_category.topics[last_topic_index].owner.username }}</span>
+
+                                        </p>
+
+                                    </div>
+
+                                {% else %}
+
+                                    <h2 class="last_msg center"><i class="fas fa-reply-all"></i> Aucun</h2>
+
+                                {% endif %}
+
+                            </li>
+                        </div>
+
+                    {% endfor %}
+
+                </ol>
+
+        </div>
+
+        {% if app.user %}
+
+            <a href="{{ path('create_topic') }}/{{ category.id }}">
+                <div class="button">
+                    <i class="fas fa-plus"></i> Créer un nouveau Topic
+                </div>
+            </a>
+
+        {% endif %}
+
+    </div>
+
+{% endblock %}

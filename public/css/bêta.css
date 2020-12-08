@@ -1,0 +1,188 @@
+html{
+    margin:0;
+    background: url("../img/background_1.png") no-repeat center fixed;
+    background-size: cover;
+    padding-bottom: 750px;
+}
+
+main {
+    width: 80%;
+    margin: 400px auto 0 auto;
+}
+
+/* SECTION ALERT MSG */
+
+.alert_msg {
+    width: 100%;
+    font-family: "Zilla Slab", sans-serif;
+    color: white;
+    margin: 0 auto 40px auto;
+}
+
+.alert_msg h3 {
+    font-size: 1.8em;
+}
+
+.alert_msg p {
+    font-size: 1.2em;
+}
+
+.alert_msg_error {
+    background-color: #FF3E3E;
+    padding: 15px 0 15px 3%;
+}
+.alert_msg_success {
+    background-color: #6FD46F;
+    padding: 15px 0 15px 3%;
+}
+
+/* FORM SECTION */
+
+.form {
+    background-color: rgba(255,255,255,0.8);
+    padding: 20px;
+}
+
+.form > h1 {
+    text-align: center;
+    font-family: "Zilla Slab", sans-serif;
+    padding: 5px 0;
+    width: 60%;
+    display: block;
+    color: white;
+    background-color: var(--red);
+    font-size: 2em;
+    margin: 20px auto 60px auto;
+}
+
+.form > form {
+    width: 50%;
+    margin: auto;
+}
+
+.form input {
+    margin-top: 20px;
+    width: 100%;
+    font-size: 1.5em;
+    font-family: "Zilla Slab", sans-serif;
+    outline: none;
+    border: none;
+    border-bottom: var(--red) 1px solid;
+    background-color: transparent;
+}
+
+.form textarea {
+    margin: 20px 0;
+    width: 100%;
+    font-size: 1.5em;
+    font-family: "Zilla Slab", sans-serif;
+    float: right;
+    resize: vertical;
+    outline: none;
+    border: none;
+    border-bottom: var(--red) 1px solid;
+    background-color: transparent;
+}
+
+.form label {
+    display: block;
+    margin-top: 100px;
+    font-family: "Zilla Slab", sans-serif;
+    font-size: 1.5em;
+    color: var(--red);
+}
+
+.btn {
+    width: 60%;
+    border: none;
+    outline: none;
+    background-color: var(--red);
+    color: white;
+    font-size: 2.5em;
+    font-family: "Zilla Slab", sans-serif;
+    display: block;
+    margin: auto;
+}
+
+.btn:hover {
+    filter: contrast(200%);
+    cursor: pointer;
+}
+
+/* RESPONSIVE */
+
+/* IPAD ROTATE */
+
+@media screen and (max-width: 1024px) {
+
+    main {
+        width: 95%;
+        margin: 300px auto 0 auto;
+    }
+
+    .form > h1 {
+        width: 75%;
+        font-size: 1.8em;
+    }
+
+    .form > form {
+        width: 60%;
+    }
+}
+
+/* MOBILE ROTATE */
+
+@media screen and (max-width: 812px) {
+
+    main {
+        width: 98%;
+        margin: 200px auto 0 auto;
+    }
+
+    main.sticky {
+        margin: 170px auto 0 auto;
+    }
+
+    .form > h1 {
+        width: 90%;
+        font-size: 1.8em;
+    }
+
+    .form > form {
+        width: 80%;
+    }
+}
+
+/* IPAD */
+
+@media screen and (max-width: 768px) {
+
+    main {
+        width: 98%;
+        margin: 150px auto 0 auto;
+    }
+
+    .form > h1 {
+        font-size: 1.6em;
+    }
+
+}
+
+/* MOBILE */
+
+@media screen and (max-width: 414px) {
+
+    main {
+        width: 100%;
+        margin: 73px 0 0 0;
+    }
+
+    .form > h1 {
+        width: 95%;
+        font-size: 1.2em;
+    }
+
+    .form > form {
+        width: 90%;
+    }
+}

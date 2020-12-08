@@ -1,0 +1,34 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/admin/console.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <section class="servers_consoles">
+
+        <h1 class="block_title_h1">Consoles</h1>
+
+        <label id="console_choose_label">
+            Console du serveur:
+            <select id="console_choose">
+                {% for server in values['servers'] %}
+                    <option value="{{ server }}">{{ server }}</option>
+                {% endfor %}
+            </select>
+        </label>
+
+        <div id="terminal"></div>
+        <div id="cmds">
+            <input type="text" id="cmd_value" placeholder="> Commande à envoyer sur le serveur"><button id="cmd_send">Envoyer</button>
+            <p id="cmd_error"></p>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/admin/console.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{% endblock %}

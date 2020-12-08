@@ -1,0 +1,136 @@
+{% extends 'accueil/support/support_base.html.twig' %}
+
+{% block content %}
+
+    <h2>Demander de l'aide</h2>
+
+    <div class="help_content_block">
+
+        <!-- NEW TICKET -->
+
+        {% if ticket is null %}
+
+            <p>
+                <i class="fas fa-info-circle"></i>
+                 Merci de réaliser des demandes d'aide pertinentes, le support est un outil d'aide / résolution de problèmes et non humoristique. Merci de votre compréhension.
+            </p>
+
+            <button class="collapsible"><i class="fas fa-ticket-alt"></i> Ouvrir un ticket</button>
+            <div class="ticket_content">
+                <form method="post">
+
+                    <div class="select_line">
+                        <div class="select-box">
+                            <select name="ticket_priority">
+                                <option value="0">Faible</option>
+                                <option value="1">Moyenne</option>
+                                <option value="2">Forte</option>
+                                <option value="3">Urgente</option>
+                            </select>
+                            <label>Priorité</label>
+                        </div>
+
+                        <div class="select-box">
+                            <select name="ticket_category">
+                                {% for category in categories %}
+
+                                    <option value="{{ category.id }}">{{ category.name }}</option>
+
+                                {% endfor %}
+                                <option value="-1">Autre...</option>
+                            </select>
+                            <label>Catégorie</label>
+                        </div>
+                    </div>
+
+                    <div class="title-box">
+                        <input type="text" name="ticket_title" required>
+                        <label>Titre</label>
+                    </div>
+
+                    <div class="content-box">
+                        <textarea type="text" name="ticket_content" required></textarea>
+                        <label>Description détaillée</label>
+                    </div>
+
+                    <button type="submit" name="ticket_submit" class="btn">
+                        Créer
+                    </button>
+                </form>
+            </div>
+
+        <!-- VIEW TICKET -->
+
+        {% else %}
+
+            <button class="collapsible"><i class="fas fa-ticket-alt"></i> #{{ ticket.id }} par {{ ticket.owner.pseudo }} le {{ ticket.createAt | date('d/m/Y à H:i') }}
+            <br> {{ ticket.title }}</button>
+
+            <div class="ticket_view">
+
+                <div class="ticket_view_content">
+                    <h2>Contenu du ticket</h2>
+                    <p>{{ ticket.content }}</p>
+                    <h2>Catégorie: <span>{{ ticket.category.name }}</span></h2>
+
+                    <div class="ticket_view_content_resolved_block">
+                        <h2>Résolu:
+                            {% if ticket.resolved == true %}
+                                <i class="green fas fa-check"></i>
+                            {% else %}
+                                <i class="red far fa-times-circle"></i>
+                            {% endif %}
+                        </h2>
+
+                        {% if ticket.resolved == false %}
+                            <form method="post">
+                                <button type="submit" name="ticket_resolved_submit" class="btn_resolved">
+                                    Passer en résolu
+                                </button>
+                            </form>
+                        {% endif %}
+                    </div>
+
+
+                    <h2>Messages:</h2>
+                    {% for message in ticket.ticketsmessages %}
+
+                        <div class="ticket_message_frame">
+
+                            <div>
+                                <p class="ticket_message_frame_top">
+                                    <i class="fas fa-reply-all"></i>
+                                    <img src="https://minotar.net/helm/{{ app.user.pseudo }}/32.png" alt="">
+                                    {{ message.owner.pseudo }} le {{ message.createAt | date('d/m/Y à H:i') }}
+                                </p>
+                                <p class="ticket_message_frame_bot">
+                                    {{ message.content }}
+                                </p>
+                            </div>
+
+                        </div>
+
+                    {% endfor %}
+
+                    <form method="post">
+
+                        <div class="content-box">
+                            <textarea type="text" name="ticket_message_content" required></textarea>
+                            <label>Contenu du message</label>
+                        </div>
+
+                        <button type="submit" name="ticket_message_submit" class="btn_msg">
+                            Envoyer
+                        </button>
+
+                    </form>
+                </div>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+
+{% endblock %}

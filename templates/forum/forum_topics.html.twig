@@ -1,0 +1,83 @@
+{% extends 'forum/forum_base.html.twig' %}
+
+{% block stylesheets_form %}
+    <link rel="stylesheet" href="{{ asset('css/forum/forum.css') }}">
+{% endblock %}
+
+{% block body_form %}
+
+    <div class="whiteBackGround">
+
+        <div class="background_cat ribbon left-bottom right-top">
+            <h1 class="cat">
+                <i class="fas fa-comment"></i> {{ sub_category.name }}
+            </h1>
+        </div>
+
+        <ol>
+
+            {% for topic in topics %}
+                <div class="table_line">
+                    <li class="flex table_line_block">
+
+                    <div class="souscategorie">
+                        <a href="{{ path('forum') }}/{{ category.id }}.{{ sub_category.id }}/{{ topic.get_url_custom_encode_title() }}.{{ topic.id }}">
+                            <h2 class="topic">
+                                <i class="fas fa-file-signature"></i> {{ topic.title }}
+                            </h2>
+                        </a>
+                    </div>
+
+                    <div class="table_info">
+                        <h2>
+                            <i class="fas fa-reply"></i> {{ topic.messages | length }}
+                        </h2>
+                    </div>
+
+                    {% set last_message_index = topic.messages | length - 1%}
+
+                    {% if last_message_index >= 0 %}
+
+                        <div class="last_msg">
+
+                            <img src="https://minotar.net/helm/{{ topic.owner.username }}/64.png" alt="" class="head"/>
+
+                            <p>
+                                <i class="fas fa-reply-all"></i>
+
+                                    {{ topic.messages[last_message_index].createAt|date("d/m/Y à H:i") }}
+
+                                <br>de <span style="color: red; ">{{ topic.owner.username }}</span>
+
+                            </p>
+                        </div>
+
+                    {% else %}
+
+                        <h2 class="last_msg center"><i class="fas fa-reply-all"></i> Aucun</h2>
+
+                    {% endif %}
+
+                    <div class="last_msg"> <img src="https://minotar.net/helm/{{ topic.owner.pseudo }}/64.png" alt="" class="head"/>
+                        <p>
+                            <span style="color: #F1D318; "><i class="fas fa-crown"></i></span> {{ topic.createAt|date("d/m/Y à H:i") }}<br /> de <span style="color: red; ">{{ topic.owner.pseudo }}</span></p></div>
+
+                    </li>
+                </div>
+            {% endfor %}
+
+        </ol>
+
+    </div>
+
+    {% if app.user %}
+
+        <a href="{{ path('create_topic') }}/{{ category.id }}">
+            <div class="button">
+                <i class="fas fa-plus"></i> Créer un nouveau Topic
+            </div>
+        </a>
+
+    {% endif %}
+
+{% endblock %}

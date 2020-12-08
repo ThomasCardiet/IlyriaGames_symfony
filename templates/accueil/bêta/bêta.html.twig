@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset("css/bêta.css") }}" />
+{% endblock %}
+
+{% block title %}Bêta{% endblock %}
+
+{% block body %}
+
+    <section class="alert_msg">
+        {% if msg['success'] is defined %}
+            <div class="alert_msg_success">
+
+                <h3>Une ou plusieurs tâches ont été réalisées avec succès:</h3>
+
+                <p>
+                    -> {{ msg['success'] }}
+                </p>
+
+            </div>
+        {% elseif msg['error'] is defined  %}
+            <div class="alert_msg_error">
+
+                <h3>Une ou plusieurs erreurs ont été détectées:</h3>
+
+                <p>
+                    -> {{ msg['error'] }}
+                </p>
+
+            </div>
+        {% endif %}
+    </section>
+
+    <section class="form">
+
+        <h1>Merci de remplir ce formulaire afin de participer à la bêta</h1>
+
+        {{ form_start(form) }}
+
+            {{ form_row(form.pseudo, {'attr': {'placeholder': 'exemple: TraXxFr'}, 'label': 'Votre pseudo Minecraft'}) }}
+            {{ form_row(form.motivation, {'label': 'Vos motivations'}) }}
+            <button type="submit" class="btn">Envoyer</button>
+
+        {{ form_end(form) }}
+
+    </section>
+
+{% endblock %}

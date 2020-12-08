@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset("css/account.css") }}" />
+{% endblock %}
+
+{% block title %}Mon Compte{% endblock %}
+
+{% block body %}
+
+    <section class="account_search">
+
+        {% if error_msg|length > 0 %}
+            <section class="error_msg">
+
+                <h3>Une ou plusieurs erreurs ont été détectées:</h3>
+
+                <p>
+                    {% for error in error_msg %}
+                        -> {{ error }}
+                    {% endfor %}
+                </p>
+
+            </section>
+        {% endif %}
+
+        <form class="account_search_form" method="post">
+            <label>
+                <i class="fas fa-search"></i>
+                <input type="text" name="search_value" placeholder="Entrez un pseudo">
+            </label>
+            <button class="account_search_form_btn" type="submit" name="search_submit">GO</button>
+            <a class="account_search_form_link" href="{{ path('account') }}">Mon Compte</a>
+            <div class="account_search_form_responsive"></div>
+        </form>
+
+    </section>
+
+    <section class="accounts_list">
+
+        <p>{{ users_list|length }} résultat(s)</p>
+        <table>
+            <tr class="table_head">
+                <td>Visuel</td>
+                <td>Pseudo</td>
+                <td class="responsive_hide">Inscription</td>
+                <td class="responsive_hide">Status</td>
+                <td>Grade</td>
+            </tr>
+
+            {% for account in users_list %}
+
+                {% set account_server = findOneBy(repo_user_server, { 'pseudo': account.pseudo }) %}
+
+                {% if account_server is not null %}
+
+                    <tr class="table_content search_account_content">
+                        <input type="hidden" value="{{ path('account') }}/{{ account.id }}">
+                        <td><img src="https://minotar.net/helm/{{ account.pseudo }}/60.png" alt=""></td>
+                        <td>{{ account.pseudo }}</td>
+                        <td class="responsive_hide">Le {{ account.date|date("d/m/Y à H:i") }}</td>
+                        {% if account_server.server == 'NONE' %}
+                            <td class="off_line responsive_hide">Hors ligne</td>
+                        {% else %}
+                            <td class="on_line responsive_hide">En ligne</td>
+                        {% endif %}
+                        <td style="color: {{ account_server.rankcolor }}">{{ account_server.groupe }}</td>
+                    </tr>
+
+                {% endif %}
+
+            {% endfor %}
+
+        </table>
+
+    </section>
+
+{% endblock %}

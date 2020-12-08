@@ -1,0 +1,328 @@
+main {
+	width: 95%;
+	margin: 400px auto 0 auto;
+}
+
+/*FORUM*/
+
+.background_cat {
+	background: #d34836;
+	border-radius:12px 0 12px 0;
+}
+
+.whiteBackGround {
+	background-color: white;
+	padding-bottom: 10px;
+}
+
+.cat {
+	padding: 1%;
+	color: white;
+	font: bold 3em Verdana;
+}
+
+.flex {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 40px;
+}
+
+.avatar {
+	border: grey solid 2px;
+	border-radius: 10px;
+	width: 100%;
+	padding: 20%;
+}
+
+.head {
+	width: 100%;
+	border-radius: 10px;
+}
+
+.poster_name {
+	text-align: center;
+	color: white;
+}
+
+.auteur_info {
+	border: grey solid 2px;
+	border-radius: 10px;
+	width: 100%;
+	text-align: center;
+	font:bold 0.8em Verdana;
+}
+
+.topic_msg {
+	border: grey solid 2px;
+	border-radius: 10px;
+	width: 80%;
+	margin-right: 2%;
+	padding: 1%;
+	font:1.2em Verdana;
+}
+
+.subject {
+	font-size: 0.6em;
+}
+
+img {
+    max-width: 100%;
+}
+
+.pages_nb {
+}
+
+.cliqued {
+    background-color: #E8E8E8;
+    border-radius: 5px;
+    font:bold 1.2em Verdana;
+    color: black;
+}
+
+.no_cliqued {
+ 	border: inset 2px #A7A5A4;
+    background-color: white;
+    border-radius: 5px;
+    font:bold 1.2em Verdana;
+    color: black;
+}
+
+.no_cliqued:hover {
+ 	border: inset 2px #A7A5A4;
+    background-color: #F7D91D;
+    border-radius: 5px;
+    color: white;
+}
+
+.pagination {
+	display: flex;
+	height: 50px;
+}
+
+.pagination a {
+	padding: 0.5%;
+}
+
+.pagination .pages_nb {
+	padding: 0.5%;
+}
+
+.error {
+     font:bold 1em Verdana;
+	text-align: center;
+}
+
+.response {
+	width: 80%;
+	margin: 0 auto 40px auto;
+}
+
+textarea {
+	margin-top: 40px;
+	height: 300px;
+	width: 100%;
+	font:bold 1em Verdana;
+}
+
+
+.button_delete {
+	background-color: #d34836;
+	width: 28%;
+	border-radius:10px;
+	font:bold 2.5em Verdana;
+	text-align: center;
+	padding: 5px 0;
+	margin-left: 2%;
+	color: white;
+}
+
+.button_delete:hover {
+	background-color: red;
+	color: white;
+	cursor: pointer;
+}
+
+.button {
+	background-color: white;
+	width: 25%;
+	border-radius:2px 12px 2px 12px;
+	font:bold 1.5em Verdana;
+	text-align: center;
+	padding: 1%;
+}
+
+.button:hover {
+	background-color: #d34836;
+	color: white;
+	cursor: pointer;
+}
+
+.responses_title {
+	font:bold 2em Verdana;
+}
+
+.responses_separator {
+	width: 95%;
+	margin: auto;
+}
+
+/* RESPONSIVE */
+
+/* IPAD ROTATE */
+
+@media screen and (max-width: 1024px) {
+
+	main {
+		width: 95%;
+		margin: 270px auto 0 auto;
+	}
+
+	main.sticky {
+		margin: 220px auto 0 auto;
+	}
+
+	.button_delete {
+		width: 35%;
+		font-size: 1.5em;
+	}
+
+	.avatar {
+		width: 80%;
+		padding: 10%;
+	}
+
+	.topic_msg {
+		width: 76%;
+	}
+
+	.button {
+		width: 40%;
+	}
+
+}
+
+/* MOBILE ROTATE */
+
+@media screen and (max-width: 812px) {
+
+	main {
+		width: 98%;
+		margin: 200px auto 0 auto;
+	}
+
+	main.sticky {
+		margin: 150px auto 0 auto;
+	}
+
+	.button_delete {
+		width: 40%;
+		font-size: 1.5em;
+	}
+
+	.avatar {
+		width: 75%;
+		padding: 8%;
+	}
+}
+
+/* IPAD */
+
+@media screen and (max-width: 768px) {
+
+	main {
+		width: 98%;
+		margin: 150px auto 0 auto;
+	}
+
+	.button {
+		width: 50%;
+	}
+
+}
+
+/* MOBILE */
+
+@media screen and (max-width: 414px) {
+
+	main {
+		width: 100%;
+		margin: 73px 0 0 0;
+	}
+
+	.background_cat {
+		border-radius: 0;
+	}
+
+	.cat {
+		font-size: 2.2em;
+		text-align: center;
+	}
+
+	.button_delete {
+		width: 95%;
+		font-size: 1.5em;
+		display: block;
+		margin: auto;
+	}
+
+	.flex {
+		display: block;
+	}
+
+	ol {
+		padding: 0;
+	}
+
+	.avatar {
+		border: none;
+		border-radius: 0;
+		margin: auto;
+		padding: 0;
+		width: 98%;
+		display: flex;
+		justify-content: space-around;
+		text-align: center;
+	}
+
+	.avatar>div>h2 {
+		margin-top: 8px;
+	}
+
+	.hide_responsive {
+		display: none;
+	}
+
+	.responses_title {
+		font-size: 1.5em;
+		text-align: center;
+	}
+
+	.head {
+		margin: -22px 0 -14px 0;
+		width: 50%;
+		border-radius: 0;
+	}
+
+	.poster_name {
+		text-align: center;
+		color: white;
+		margin-bottom: 10px;
+	}
+
+	.auteur_info {
+		border: none;
+		border-radius: 0;
+		width: 40%;
+		margin-top: 15px;
+	}
+
+	.topic_msg {
+		width: 95%;
+		margin: auto;
+		border-radius: 0;
+	}
+
+	.button {
+		width: 100%;
+	}
+}

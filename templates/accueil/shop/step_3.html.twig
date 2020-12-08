@@ -1,0 +1,85 @@
+{% extends 'accueil/shop/shop_base.html.twig' %}
+
+{% block content_title %}Effectuer le paiement{% endblock %}
+
+{% block content %}
+
+    {% if msg_error|length <= 0 %}
+
+        <div class="recap_block">
+
+            <h3>Récapitulatif de la commande:</h3>
+
+            <p>
+                Destinataire: <span class="red">{{ offer['user'].pseudo }}</span>
+                {% if offer_value is not null %}
+                    <br>
+                    Offre sélectionnée: <span class="green">{{ offer['dons'] }}(+{{ offer['bonus'] }}) Dons</span> pour <span class="red">{{ offer['price'] }}€</span>
+                {% endif %}
+                <br>
+                Mode de paiement: <span class="green">{{ offer['mode'] }}</span>
+            </p>
+
+        </div>
+
+        <div class="cgu_block">
+
+            <p>
+                <i class="fas fa-info-circle"></i> En effectuant un paiement, vous déclarez avoir pris connaissance et être en accord avec les <a href="{{ path('cgu') }}" class="red">Conditions Générales d'Utilisation</a> et <a href="{{ path('cgu') }}" class="red">Conditions Générales de Ventes</a>.
+                Vous déclarez aussi être le propriétaire du moyen de paiement, et être en accord avec l'utilisation de celui-ci.
+            </p>
+
+        </div>
+
+        {% if offer['mode'] == 'dedipass' %}
+
+            <div data-dedipass="61a9ab0ed815ce262b7b6e6f5d7fe7a4" data-dedipass-custom="{{app.user.username}}"></div>
+
+
+        {% elseif offer['mode'] == 'paypal' %}
+
+                <form action="{{ payment_utils['link'] }}" method="post">
+
+                    {% for key, value in payment_utils['postfields'] %}
+
+                        <input type="hidden" name="{{ key }}" value="{{ value }}" />
+
+                    {% endfor %}
+
+                    <button type="submit" class="paypal_btn payment_btn btn btn-primary">
+                        <img src="{{ asset('img/shop/paypal.png') }}" alt="">
+                    </button>
+
+                </form>
+
+        {% elseif offer['mode'] == 'paysafecard' %}
+
+            <div class="payment_warning_block">
+
+                <p>
+                    <i class="fas fa-info-circle"></i> Votre code paysafecard sera validé par notre équipe sous 24h, vous serez ensuite automatiquement crédité sur votre compte dès la vérification terminée.
+                </p>
+
+            </div>
+
+            <form method="post">
+
+                <input type="text">
+
+            </form>
+
+        {% elseif offer['mode'] == 'stripe' %}
+
+            <form action="" method="post">
+
+                <button type="submit" class="stripe_btn payment_btn btn btn-primary">
+                    <img src="{{ asset('img/shop/stripe.png') }}" alt="">
+                </button>
+
+            </form>
+
+        {% endif %}
+
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,146 @@
+{% extends 'accueil/shop/shop_base.html.twig' %}
+
+{% block content_title %}Choisissez le montant{% endblock %}
+
+{% block content %}
+
+    <div class="purchase_offer_form">
+
+        <form method="post">
+
+            <div class="offers_content">
+
+                <div class="offer_card">
+
+                    <p>
+                        <span class="offer_card_title">
+                            10 dons
+                        </span>
+                        <br>
+                        <span class="offer_card_bonus"></span>
+                        <br>
+                        <span class="offer_card_price"></span>
+                    </p>
+
+                    <i class="fas fa-crown"></i>
+
+                </div>
+
+                <div class="offer_card">
+
+                    <p>
+                        <span class="offer_card_title">
+                            50 dons
+                        </span>
+                        <br>
+                        <span class="offer_card_bonus"></span>
+                        <br>
+                        <span class="offer_card_price"></span>
+                    </p>
+
+                    <i class="fas fa-crown"></i>
+
+                </div>
+
+                <div class="offer_card">
+
+                    <p>
+                        <span class="offer_card_title">
+                            100 dons
+                        </span>
+                        <br>
+                        <span class="offer_card_bonus"></span>
+                        <br>
+                        <span class="offer_card_price"></span>
+                    </p>
+
+                    <i class="fas fa-crown"></i>
+
+                </div>
+
+                <div class="offer_card">
+
+                    <p>
+                        <span class="offer_card_title">
+                            200 dons
+                        </span>
+                        <br>
+                        <span class="offer_card_bonus"></span>
+                        <br>
+                        <span class="offer_card_price"></span>
+                    </p>
+
+                    <i class="fas fa-crown"></i>
+
+                </div>
+
+                <div class="offer_card">
+
+                    <p>
+                        <span class="offer_card_title">
+                            500 dons
+                        </span>
+                        <br>
+                        <span class="offer_card_bonus"></span>
+                        <br>
+                        <span class="offer_card_price"></span>
+                    </p>
+
+                    <i class="fas fa-crown"></i>
+
+                </div>
+
+                <div class="offer_card">
+
+                    <p>
+                        <span class="offer_card_title">
+                            1000 dons
+                        </span>
+                        <br>
+                        <span class="offer_card_bonus"></span>
+                        <br>
+                        <span class="offer_card_price"></span>
+                    </p>
+
+                    <i class="fas fa-crown"></i>
+
+                </div>
+
+            </div>
+
+            <div class="personal_offer_block">
+                <div class="purchase_offer_form_value_block">
+                    <label>Entrez la quantité désirée</label>
+                    <input type="number" min="10" max="99999" class="purchase_offer_form_value" placeholder="Quantité (exemple: 125)">
+                </div>
+                <div class="offer_card" id="personal_offer">
+
+                    <p>
+                        <span class="offer_card_title">
+                            10 dons
+                        </span>
+                        <br>
+                        <span class="offer_card_bonus"></span>
+                        <br>
+                        <span class="offer_card_price"></span>
+                    </p>
+
+                    <i class="fas fa-crown"></i>
+
+                </div>
+            </div>
+
+            <p class="purchase_form_recap">
+                *Offre choisie =>
+                <span>
+                    Aucune
+                </span>
+                <input type="hidden" name="offer_dons" value="">
+            </p>
+            <button type="submit" class="next_step_button">Etape Suivante</button>
+
+        </form>
+
+    </div>
+
+{% endblock %}

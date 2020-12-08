@@ -1,0 +1,227 @@
+.forum_nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: 2%;
+}
+
+.forum_liens {
+    display: flex;
+    border: solid grey 5px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.forum_liens div {
+    color: black;
+    border-radius: 10px;
+    padding: 1.5%;
+    margin-left: 2%;
+    font:bold 1.5em Verdana;
+}
+
+.forum_liens a:hover {
+    color: #d34836;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.forum_liens p {
+}
+
+.forum_search {
+    padding: 1%;
+    width: 40%;
+}
+
+.buttonSearch {
+    text-decoration: none;
+    border-radius:12px 0 12px 0;
+    border: solid 1px #A7A5A4;
+    background: white;
+    font:bold 1.5em Verdana;
+    color:#555;
+    width: 39%;
+    padding: 2%;
+}
+
+.buttonSearch:hover{
+    background: #d34836;
+    cursor: pointer;
+    color:#fff;
+}
+
+.textSearch{
+    font:bold 1.5em Verdana;
+    background-color: white;
+    border: solid 1px #A7A5A4;
+    border-radius: 5px;
+    width: 60%;
+    text-align: center;
+    padding: 2%;
+}
+
+
+
+
+.ribbon {
+  position: relative;   /* pour servir de référent */
+  margin: 1em -10px;    /* pour décaler les bords */
+  background: #CC0000;  /* pour visualiser */
+}
+
+.ribbon::before,
+.ribbon::after {
+  content: "";
+  position: absolute;
+  border-style: solid;
+}
+
+.left-top::before {
+  left: 0;
+  bottom: 100%;
+  border-color: transparent #800000;
+  border-width: 10px 10px 0 0;
+}
+
+.left-bottom::before {
+  left: 0;
+  top: 100%;
+  border-color: transparent #800000;
+  border-width: 0 10px 10px 0;
+}
+
+.right-top::after {
+  right: 0;
+  bottom: 100%;
+  border-color: #800000 transparent;
+  border-width: 0 10px 10px 0;
+}
+
+.right-bottom::after {
+  right: 0;
+  top: 100%;
+  border-color: #800000 transparent;
+  border-width: 10px 10px 0 0;
+}
+
+/* RESPONSIVE */
+
+/* IPAD ROTATE */
+
+@media screen and (max-width: 1024px) {
+
+    .forum_search {
+        width: 60%;
+    }
+
+    .buttonSearch {
+        width: 35%;
+    }
+
+    .textSearch{
+        width: 60%;
+    }
+
+
+}
+
+/* MOBILE ROTATE */
+
+@media screen and (max-width: 812px) {
+
+    .forum_liens div {
+        font-size:1.2em;
+    }
+
+    .forum_search {
+        width: 50%;
+    }
+
+    .buttonSearch {
+        width: 35%;
+        font-size: 1.1em;
+    }
+
+    .textSearch{
+        width: 60%;
+        font-size: 1.1em;
+    }
+
+}
+
+/* IPAD */
+
+@media screen and (max-width: 768px) {
+
+    .textSearch{
+        width: 60%;
+        font-size: 1em;
+    }
+
+}
+
+/* MOBILE */
+
+@media screen and (max-width: 414px) {
+
+    .forum_nav {
+        display: block;
+    }
+
+    .forum_liens {
+        width: 95%;
+        margin: auto;
+    }
+
+    .forum_liens div {
+        margin-left: 0;
+    }
+
+    .forum_search {
+        width: 100%;
+    }
+
+    .buttonSearch {
+        width: 30%;
+    }
+
+    .textSearch{
+        width: 65%;
+    }
+
+
+    /* RIBBON */
+
+    .ribbon {
+        margin: 0;    /* pour décaler les bords */
+    }
+
+    .ribbon::before,
+    .ribbon::after {
+        content: none;
+        position: unset;
+        border: none
+    }
+
+    .left-top::before {
+        border: none;
+    }
+
+    .left-bottom::before {
+        border: none;
+    }
+
+    .right-top::after {
+        border: none;
+    }
+
+    .right-bottom::after {
+        border: none
+    }
+
+}

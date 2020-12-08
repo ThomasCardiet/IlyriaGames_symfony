@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Site Officiel du serveur Minecraft IlyriaGames, Mini-Jeux 1.9+">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IlyriaGames | Serveur Mini-Jeux</title>
+    <link rel="stylesheet" href="{{ asset('css/header.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" href="{{ asset('img/logo.png') }}">
+    <script src="https://kit.fontawesome.com/dc883addae.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header>
+
+        <section class="header_top">
+            <div class="header_top_left">
+                <img src="{{ asset('img/logo.png') }}" alt="">
+                <div class="logo_frame_titles">
+                    <h1>IlyriaGames</h1>
+                    <h2>Un serveur hilarant!</h2>
+                </div>
+            </div>
+            <div class="header_top_right">
+                <h3>Version 1.9 et plus</h3>
+                <h2 id="ip_address">
+                    PLAY.ILYRIAGAMES.FR
+                    <div id="ip_address_popup">
+                        <span>Copié!</span>
+                    </div>
+                </h2>
+            </div>
+
+            <!-- BURGER MENU -->
+            <button id="hamburger-button">&#9776;</button>
+            <div id="hamburger-sidebar">
+                <div id="hamburger-sidebar-header">
+                    <img class="hamburger_sidebar_header_logo" src="{{ asset('img/logo.png') }}" alt="">
+                    <a href="{% if app.user %}{{ path('account') }}{% else %}{{ path('security_login') }}{% endif %}">
+                        <div class="hamburger_sidebar_header_profile">
+                            <img class="hamburger_sidebar_header_profile_logo" src="{% if app.user %}https://minotar.net/helm/{{ app.user.username }}/164.png
+                                                        {% else %}{{ asset('img/unknown.png') }}{% endif %}" alt="">
+                            <h2>
+                                {% if app.user %}{{ app.user.username }}
+                                {% else %}Se Connecter{% endif %}
+                            </h2>
+                            <hr>
+                        </div>
+                    </a>
+                </div>
+                <div id="hamburger-sidebar-body"></div>
+            </div>
+            <div id="hamburger-overlay"></div>
+
+        </section>
+
+        <section class="header_bot">
+
+                <a class="header_bot_logo_link" {% if app.user %}href="{{ path('account') }}{% endif %}">
+
+                    <img id="{% if not app.user %}header_connexion_img{% endif %}" class="header_bot_logo" src="{% if app.user %}https://minotar.net/helm/{{ app.user.username }}/164.png
+                                                    {% else %}{{ asset('img/unknown.png') }}{% endif %}" alt="">
+                    <div class="header_bot_popup">
+                        {% if app.user %}Mon Compte
+                        {% else %}Se connecter{% endif %}
+                    </div>
+                </a>
+
+                <nav class="header_links header_links_left">
+                    <a class="{% if app.request.get('_route') == 'accueil' %}underlined{% endif %}" href="{{ path('accueil') }}">Accueil</a>
+                    <a class="{% if app.request.get('_route') == 'voter' %}underlined{% endif %}" href="{{ path('voter') }}">Voter</a>
+                    <a class="{% if app.request.get('_route') == 'shop' %}underlined{% endif %}" href="{{ path('shop') }}">Boutique</a>
+                </nav>
+
+                <div class="header_links_icon"></div>
+
+                <img src="{{ asset('img/logo.png') }}" class="sticky_menu_logo" alt="">
+
+                <nav class="header_links header_links_right">
+                    <a class="{% if app.request.get('_route') == 'forum' %}underlined{% endif %}"  href="{{ path('forum') }}">Forum</a>
+                    <a class="{% if app.request.get('_route') == 'support' %}underlined{% endif %}"  href="{{ path('support') }}">Support</a>
+                    <a class="{% if app.request.get('_route') == 'accounts' %}underlined{% endif %}"  href="{{ path('accounts') }}" href="">Joueurs</a>
+                    <a class="{% if app.request.get('_route') == 'bêta' %}underlined{% endif %}" href="{{ path('bêta') }}">Bêta</a>
+                </nav>
+
+        </section>
+
+        <section class="login_popup">
+
+            <h2>Se connecter</h2>
+            <hr>
+
+            <i class="login_popup_close fas fa-times"></i>
+
+            <form action="{{ path('security_login') }}" method="post">
+
+                <div class="login_popup_input">
+                    <i class="fas fa-user"></i>
+                    <div class="login_popup_input_right">
+                        <h3>Pseudo Serveur</h3>
+                        <input required type="text" name="_username" placeholder="Pseudo">
+                        <p>Pseudo oublié? <a href="">cliquez-ici</a></p>
+                    </div>
+                </div>
+
+                <div class="login_popup_input">
+                    <i class="fas fa-lock"></i>
+                    <div class="login_popup_input_right">
+                        <h3>Mot de passe</h3>
+                        <input required type="password" name="_password" placeholder="Mot de passe">
+                        <p>Mot de passe oublié? <a href="">cliquez-ici</a></p>
+                    </div>
+                </div>
+
+                <button class="login_popup_btn" type="submit">Connexion</button>
+
+                <a class="login_popup_connection_link" href="{{ path('security_login') }}">
+                    Se rendre sur la page de connexion
+                </a>
+
+            </form>
+
+        </section>
+
+    </header>
+
+    <main>
+        {% block body %}{% endblock %}
+    </main>
+
+    <footer>
+
+        <div class="footer_top">
+
+            <a class="discord" href="https://discord.gg/ZGesvRg" target="_blank">
+                <i class="fab fa-discord"></i>
+            </a>
+
+            <a class="youtube" href="https://www.youtube.com/channel/UCEp0aHkH1FMCvSDCVHlPzzg" target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
+
+            <a class="twitter" href="https://twitter.com/IlyriaG" target="_blank">
+                <i class="fab fa-twitter"></i>
+            </a>
+
+        </div>
+
+        <div class="footer_middle">
+
+            <h2>Composition de l'équipe Administrative</h2>
+
+            <div class="footer_middle_images">
+
+                {% set staffs = ["TraXxFr", "BYZuraX", "Anazael", "NassK3", "dodoscoop93", "Heaak", "BreizhYaVat","Diduck"] %}
+                {% for staff in staffs %}
+                    <div class="popup">
+                        <img src="https://minotar.net/helm/{{ staff }}/110.png" alt="{{ staff }}">
+                        <span class="popup_text" id="PopUp_{{ staff }}">{{ staff }}</span>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        <div class="footer_bottom">
+
+            <p>
+                Copyright © 2020 IlyriaGames | Tous droits réservés | Mentions Légales: <a href="{{ path('cgu') }}">CGU</a> | Les serveurs @IlyriaGames ne sont pas affiliés à Mojang
+            </p>
+
+        </div>
+
+    </footer>
+
+{% block javascripts %}{% endblock %}
+<script src="{{ asset("js/main.js") }}"></script>
+<script src="{{ asset("js/burger.js") }}"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/admin/membres.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <div class="membres">
+
+        <h1 class="block_title_h1">Membres</h1>
+
+        <form method="POST" class="form_search">
+            <input class="textSearch" name="textSearch" type="search" placeholder="Rechercher" />
+            <input class="buttonSearch" name="buttonSearch" type="submit" value="Valider" />
+        </form>
+
+        <!-- MEMBERS LIST -->
+
+        {% if values['search_members'] is defined %}
+            {% for member in values['search_members'] %}
+
+                <a href="{{ path('admin') }}/membres/{{ member.pseudo }}"><div class="players_list">
+                    {{ member.pseudo }}</div></a>
+
+            {% endfor %}
+        {% endif %}
+
+        <!-- TABLE LAST MEMBERS -->
+
+        <table>
+            <tr class="table_head">
+                <td>Visuel</td>
+                <td>Pseudo</td>
+                <td>Mail</td>
+                <td>Date</td>
+                <td>
+                    {% if msg['msg_delete_success'] is defined %}
+
+                        <p class="valide">{{ msg['msg_delete_success']  }}</p>
+
+                    {% endif %}
+                </td>
+                <td>
+                    {% if msg['msg_password_success'] is defined %}
+
+                        <p class="valide">{{ msg['msg_password_success'] }}</p>
+
+                    {% elseif msg['msg_password_error'] is defined %}
+
+                        <p class="error">{{ msg['msg_password_error'] }}</p>
+
+                    {% endif %}
+                </td>
+            </tr>
+
+            {% for player in values.players_5 %}
+
+                    <tr class="table_content">
+                        <td><img src="https://minotar.net/helm/{{ player.pseudo }}/42.png" alt=""></td>
+                        <td>{{ player.pseudo }}</td>
+                        <td>{{ player.email }}</td>
+                        <td>{{ player.date|date("d/m/Y à H:i") }}</td>
+                        <form method="post">
+                            <input type="hidden" name="id" value="{{ player.id }}">
+                            <td>
+                                <button class="btn" type="submit" name="delete" id="delete">Supprimer</button>
+                            </td>
+                        </form>
+                            <td>
+                                <a class="btn" href="{{ path('admin') }}/membres/{{ player.pseudo }}">Modifier</a>
+                            </td>
+                    </tr>
+
+            {% endfor %}
+        </table>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/admin/news.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <div class="news">
+
+        <h1 class="block_title_h1"><i class="far fa-plus-square"></i> Partie Création</h1>
+
+        <!-- NEWS CREATION -->
+
+        <div class="news_creation">
+
+            <h2 class="block_title_h2 news_creation_title"><i class="fas fa-newspaper"></i> Création d'une News</h2>
+
+
+            <form method="POST">
+                <input class="title_news" type="text" name="create_news_title" size="70" maxlength="70" placeholder="Titre de la news"><br>
+                <textarea class="content_news" name="create_news_content" placeholder="Contenu de la news"></textarea><br>
+                <div class="button_news_back"><input class="button_news" type="submit" name="create_news_submit" value="Créer"></div>
+
+                {% if msg['msg_create_news_success'] is defined %}
+
+                    <p class="valide"><i class="fas fa-exclamation-triangle"></i> {{ msg['msg_create_news_success'] }}</p>
+
+                {% elseif msg['msg_create_news_error'] is defined %}
+
+                    <p class="error"><i class="far fa-check-circle"></i> {{ msg['msg_create_news_error'] }}</p>
+
+                {% endif %}
+
+            </form>
+
+        </div>
+
+        <!-- DELETION -->
+
+        <h1 class="block_title_h1"><i class="far fa-trash-alt"></i> Partie Suppression</h1>
+
+        <!-- NEWS DELETION -->
+
+        <div class="news_deletion">
+
+            <h2 class="block_title_h2 news_deletion_title"><i class="fas fa-newspaper"></i> Suppression d'une News</h2>
+
+            <form method="POST">
+                <select name="delete_news_option" class="news_options">
+                    {% for news in values['news'] %}
+
+                        <option value="{{ news.id }}">[{{ news.id }}] {{ news.title }}</option>
+
+                    {% endfor %}
+                </select>
+                <div class="button_news_back"><input class="button_news" type="submit" name="delete_news_submit" value="Supprimer"></div>
+
+                {% if msg['msg_delete_news_success'] is defined %}
+
+                    <p class="valide"><i class="fas fa-exclamation-triangle"></i> {{ msg['msg_delete_news_success'] }}</p>
+
+                {% elseif msg['msg_delete_news_error'] is defined %}
+
+                    <p class="error"><i class="far fa-check-circle"></i> {{ msg['msg_delete_news_error'] }}</p>
+
+                {% endif %}
+
+            </form>
+
+        </div>
+
+    </div>
+
+{% endblock %}

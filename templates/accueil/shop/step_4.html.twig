@@ -1,0 +1,78 @@
+{% extends 'accueil/shop/shop_base.html.twig' %}
+
+{% block content_title %}Validation de la commande{% endblock %}
+
+{% block content %}
+
+    <div class="validation_block">
+
+        {% if success_value == true %}
+            <h3 class="validation_success_title"><i class="fas fa-circle"></i> La commande a été réalisée avec succès</h3>
+
+            {% if payment is defined %}
+                <div class="validation_facture_block">
+
+                    <div class="validation_facture_block_top">
+
+                        <div>
+                            <h4>Commande #{{ payment.id }}</h4>
+                            <p>Le {{ payment.createAt|date('d/m/Y à H:i') }}</p>
+                        </div>
+
+                        <div>
+                            <h4>Destinataire</h4>
+                            <p>{{ payment.owner }}</p>
+                        </div>
+
+                        <div class="validation_facture_block_top_right_right">
+                            <h4>Facturé par</h4>
+                            <p>IlyriaGames</p>
+                        </div>
+
+                    </div>
+
+                    <table>
+                        <tr class="table_validation_head">
+                            <td>Type</td>
+                            <td>Qté</td>
+                            <td>Bonus</td>
+                            <td>Prix Unit(€)</td>
+                            <td>Montant Total(€)</td>
+                        </tr>
+                        <tr class="table_validation_content">
+                            <td>Points Boutique (Dons)</td>
+                            <td>{{ payment.pb }}</td>
+                            <td>{{ (payment.pb * (0.08 + (((payment.pb/100)|round(1, 'floor')/20) - ((payment.pb/1000)|round(1, 'floor'))/5.56)))|round(1, 'floor') }}</td>
+                            <td>0.099</td>
+                            <td>{{ payment.price }}</td>
+                        </tr>
+                    </table>
+
+                    <div class="validation_facture_block_bot">
+                        <h4>Mode de paiement</h4>
+                        <p>{{ payment.mode }}</p>
+                    </div>
+
+                </div>
+
+                <p class="validation_facture_msg">
+                    Si votre compte n'a pas été crédité, ou une autre erreur est survenue, merci de créer un ticket sur le support (une capture de cette page peut aider à la résolution du problème).
+                </p>
+        {% endif %}
+
+        {% else %}
+            <h3 class="validation_error_title"><i class="fas fa-circle"></i> La commande a rencontré un problème</h3>
+
+            <p class="validation_error_text">
+                Un problème a été détecté, s'il s'agit d'une erreur, merci de créer un ticket sur notre support, afin que notre équipe analyser et résoudre le problème.
+            </p>
+
+            <a class="validation_error_btn" href="{{ path('support') }}">Créer un ticket</a>
+
+        {% endif %}
+
+    </div>
+
+
+
+{% endblock %}

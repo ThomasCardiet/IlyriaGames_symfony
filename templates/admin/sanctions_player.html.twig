@@ -1,0 +1,82 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/admin/sanctions.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <section class="alert_msg">
+        {% if msg['error'] is defined %}
+            <div class="alert_msg_error">
+
+                <h3>Une ou plusieurs erreurs ont été détectées:</h3>
+
+                <p>-> {{ msg['error'] }}</p>
+
+            </div>
+        {% elseif msg['success'] is defined %}
+
+            <div class="alert_msg_success">
+
+                <h3>Une ou plusieurs tâches ont été réalisées avec succès:</h3>
+
+                <p>-> {{ msg['success'] }}</p>
+
+            </div>
+
+        {% endif %}
+    </section>
+
+    <div class="sanctions_player">
+        <div class="sanctions_player_top">
+            <img class="main_header_img" src="https://minotar.net/helm/{{ player.pseudo }}/185.png" alt="#"/>
+            <div class="player_infos">
+                <p>Pseudo: <span>{{ player.pseudo }}</span></p>
+                <p id="Sanctions" data-power="{{ power }}" data-need="{{ getPowerAdminSection(page_name, "ban_power") }}"></p>
+            </div>
+        </div>
+        <hr>
+
+        <div class="sanction_form">
+            <input type="text" id="kick_reason" placeholder="Raison...">
+            <button class="sanction_submit" value="kick">Kicker</button>
+
+            <br>
+
+            <input type="text" id="mute_reason" placeholder="Raison...">
+            <input type="number" min="0" id="mute_time" placeholder="Temps...">
+            <select id="mute_type">
+                <option value="Minute">Minute(s)</option>
+                <option value="Hour">Heure(s)</option>
+                <option value="Day">Jour(s)</option>
+                <option value="Month">Mois</option>
+                <option value="Year">Année(s)</option>
+                <option value="Unlimited">A vie</option></select>
+            <button class="sanction_submit" value="mute">Muter</button>
+
+            <br>
+
+            {% if power >= getPowerAdminSection(page_name, "ban_power") %}
+                <input type="text" id="ban_reason" placeholder="Raison...">
+                <input type="number" min="0" id="ban_time" placeholder="Temps...">
+                <select id="ban_type">
+                    <option value="Minute">Minute(s)</option>
+                    <option value="Hour">Heure(s)</option>
+                    <option value="Day">Jour(s)</option>
+                    <option value="Month">Mois</option>
+                    <option value="Year">Année(s)</option>
+                    <option value="Unlimited">A vie</option>
+                </select>
+                <button class="sanction_submit" value="ban">Bannir</button>
+            {% endif %}
+        </div>
+
+    </section>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/admin/sanction_player.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{% endblock %}

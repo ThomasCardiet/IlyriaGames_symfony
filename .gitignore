@@ -1,0 +1,80 @@
+###> symfony/framework-bundle ###
+/.env
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> symfony/web-server-bundle ###
+/.web-server-pid
+###< symfony/web-server-bundle ###
+
+###< misc ###
+# Eclipse
+/.metadata
+/.settings
+/.project
+/.buildpath
+/.classpath
+
+# Sublime
+/.sublime-project
+/.sublime-workspace
+
+# Netbeans
+/nbproject
+
+# IntelliJ
+/.idea
+*.iml
+
+# Xcode
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+project.xcworkspace
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Docker
+docker-compose.override.yml
+
+# Logs
+*.log
+
+# Build
+/build
+
+# Capistrano
+/archive.tar.gz
+
+# Misc
+/bin/variables.sh
+/secrets/*
+!/secrets/.gitkeep

@@ -1,0 +1,66 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block body %}
+
+    <div class="player">
+
+        <form method="post" class="setting_form">
+
+            <!-- SITE INFOS -->
+
+            <div class="player_title">➤ Compte: {{ user_site.pseudo }}</div>
+
+            <div class="setting_line">
+                <div class="player_info">Mail: {{ user_site.email }}</div>
+                <input class="setting_line_text" type="text" name="mail" id="mail" placeholder="Nouveau Mail">
+                <input class="setting_line_button" type="submit" name="changemail" id="changemail" value="✎Changer">
+            </div>
+
+            <div class="setting_line">
+                <div class="player_info">Mot de passe: ********</div>
+                <input class="setting_line_text" type="text" name="pass" id="pass" placeholder="Nouveau Mot de passe">
+                <input class="setting_line_button" type="submit" name="changepass" id="changepass" value="✎Changer">
+            </div>
+
+            <div class="setting_line">
+                <div class="player_info">Votes: {{ user_site.votes }}</div>
+                <input class="setting_line_button" type="submit" name="resetvote" id="resetvote" value="✘Reset">
+            </div>
+
+            <div class="player_info">Date Inscription: {{ user_site.date|date('d/m/y h:i:s') }}</div>
+
+            <!-- SERVER INFOS -->
+
+            <div class="player_info">Serveur: {{ user_server.server }}</div>
+
+            <div class="setting_line">
+                <div class="player_info">Groupe: <span style="color: {{ user_server.rankColor }}; ">{{ user_server.groupe }}</span></div>
+                <select class="setting_line_options" name="grade">
+                    {% for rank in ranks %}
+                    <option value="{{ rank }}">{{ rank }}</option>
+                    {% endfor %}
+                </select>
+                <input class="setting_line_button" type="submit" name="changegrp" id="changegrp" value="✎Changer">
+            </div>
+
+            <div class="setting_line">
+                <div class="player_info">Don(s): {{ user_server.pb }}</div>
+                <input class="setting_line_text" type="text" name="dons" id="dons" placeholder="Nouveaux Dons">
+                <input class="setting_line_button" type="submit" name="changedons" id="changedons" value="✎Changer">
+            </div>
+
+            <div class="setting_line">
+                <div class="player_info">Ilycoin(s): {{ user_server.pj }}</div>
+                <input class="setting_line_text" type="text" name="ilycoins" id="ilycoins" placeholder="Nouveaux Ilycoins">
+                <input class="setting_line_button" type="submit" name="changeilycoins" id="changeilycoins" value="✎Changer">
+            </div>
+
+            <div class="player_info">IP: {{ user_server.ip }}</div>
+
+            <input class="setting_line_button" type="submit" name="delete" id="delete" value="SUPPRIMER LE COMPTE">
+
+        </form>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/admin/stats.css') }}">
+{% endblock %}
+
+{% block headscripts %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="{{ asset('js/graphs.js') }}"></script>
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="stats">
+
+        <h1 class="block_title_h1">Statistiques</h1>
+
+        <div class="stats_counts">
+
+            <div class="card">
+                <div class="card-body visits">
+                    <div class="float-left">
+                        <h3>{{ values['visits'] | length }}</h3>
+                        <p>Nombre de visite(s)</p>
+                    </div>
+                    <div class="float-right">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                </div>
+                <div class="card-bottom">
+                    <input class="checkbox" id="visits_checkbox" type="checkbox" checked>
+                    +{{ values['day_visits'][0] }} Aujourd'hui
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body members">
+                    <div class="float-left">
+                        <h3>{{ values['members'] | length }}</h3>
+                        <p>Nombre de membre(s)</p>
+                    </div>
+                    <div class="float-right">
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+                <div class="card-bottom">
+                    <input class="checkbox" id="members_checkbox" type="checkbox" checked>
+                    +{{ values['day_members'][0] }} Aujourd'hui
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body purchases">
+                    <div class="float-left">
+                        <h3>{{ values['purchases'] | length }}</h3>
+                        <p>Nombre d'achat(s)</p>
+                    </div>
+                    <div class="float-right">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                </div>
+                <div class="card-bottom">
+                    <input class="checkbox" id="purchases_checkbox" type="checkbox" checked>
+                    +{{ values['day_purchases'][0] }} Aujourd'hui
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body topics">
+                    <div class="float-left">
+                        <h3>{{ values['topics'] | length }}</h3>
+                        <p>Nombre de topics</p>
+                    </div>
+                    <div class="float-right">
+                        <i class="fab fa-readme"></i>
+                    </div>
+                </div>
+                <div class="card-bottom">
+                    <input class="checkbox" id="topics_checkbox" type="checkbox" checked>
+                    +{{ values['day_topics'][0] }} Aujourd'hui
+                </div>
+            </div>
+
+        </div>
+
+        <div class="stats_graphs">
+            <canvas id="graph1"  style="width: 50px;height: 10px">
+
+                <script>
+                    implementGraph('admin_stats', {
+                        'values': {{ values|json_encode()|raw }}
+                    })
+                </script>
+
+            </canvas>
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset("css/shop.css") }}" />
+{% endblock %}
+
+{% block title %}Boutique{% endblock %}
+
+{% block body %}
+
+    <section class="informations">
+        <p>
+            <i class="fas fa-info-circle"></i> Taux de convertion: 10 Dons pour 1 Euro <br/>Les modifications liées aux réductions seront effectuées en jeu.
+        </p>
+    </section>
+
+    <h2 class="content_title">Achat de points boutique</h2>
+
+    <section class="content" id="content">
+
+        <div class="progression">
+            {% if page < 4 %}
+                <a href="{% if page > 0 %}{{ path('shop') }}{% endif %}" class="{% if page == 0 and playerid_value is null %}actual{% elseif playerid_value is not null %}passed{% endif %}">1.Choix destinataire <i class="fas fa-check"></i></a>
+                <a href="{% if page > 1 %}{{ path('shop') }}/{{ playerid_value }}{% endif %}" class="{% if page == 1 and mode_value is null %}actual{% elseif mode_value is not null %}passed{% endif %}">2.Mode paiement <i class="fas fa-check"></i></a>
+                <a href="{% if page > 2 %}{{ path('shop') }}/{{ playerid_value }}-{{ mode_value }}{% endif %}" class="{% if page == 2 and offer_value is null %}actual{% elseif offer_value is not null or mode_value == 'dedipass' %}passed{% endif %}">3.Choix montant <i class="fas fa-check"></i></a>
+                <a href="" class="{% if page == 3 %}actual{% endif %}">4.Paiement <i class="fas fa-check"></i></a>
+                <a href="" >5.Validation <i class="fas fa-check"></i></a>
+            {% else %}
+                <a href="" class="passed">1.Choix destinataire <i class="fas fa-check"></i></a>
+                <a href="" class="passed">2.Mode paiement <i class="fas fa-check"></i></a>
+                <a href="" class="passed">3.Choix montant <i class="fas fa-check"></i></a>
+                <a href="" class="passed">4.Paiement <i class="fas fa-check"></i></a>
+                <a href="" class="{% if page == 4 %}actual{% endif %}">5.Validation <i class="fas fa-check"></i></a>
+            {% endif %}
+        </div>
+
+        <h3>{% block content_title %}{% endblock %}</h3>
+
+        {% if msg_error is defined and msg_error|length > 0 %}
+            <div class="error_block">
+                <h4>Une ou plusieurs erreurs ont été détectées:</h4>
+                <p>
+                    {% for error in msg_error %}
+                        -> {{ error }}<br>
+                    {% endfor %}
+                </p>
+            </div>
+        {% endif %}
+
+        {% block content %}{% endblock %}
+
+        <p class="security_text">
+            <i class="fas fa-shield-alt"></i> Vos informations sont sécurisées
+        </p>
+
+    </section>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="//api.dedipass.com/v1/pay.js"></script>
+    <script src="{{ asset('js/shop.js') }}"></script>
+{% endblock %}

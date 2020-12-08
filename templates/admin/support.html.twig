@@ -1,0 +1,193 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/admin/support.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    {% if power >= getPowerAdminSection(page_name, "modification_power") %}
+
+        <h1 class="block_title_h1"><i class="far fa-plus-square"></i> Partie Création</h1>
+
+        <!-- CATEGORY CREATION -->
+
+        <section class="category_creation">
+
+            <h2 class="block_title_h2 category_creation_title"><i class="fas fa-folder-open"></i> Création d'une Catégorie</h2>
+
+
+            <form method="POST">
+                <input class="text_forum" type="text" name="create_category_name" size="70" maxlength="70" placeholder="Nom de Catégorie" />
+                <div class="button_forum_back"><input class="button_forum" type="submit" name="create_category_submit" value="Créer"></div>
+
+                {% if msg['msg_create_category_success'] is defined %}
+
+                    <p class="valide"><i class="fas fa-exclamation-triangle"></i> {{ msg['msg_create_category_success'] }}</p>
+
+                {% elseif msg['msg_create_category_error'] is defined %}
+
+                    <p class="error"><i class="far fa-check-circle"></i> {{ msg['msg_create_category_error'] }}</p>
+
+                {% endif %}
+
+            </form>
+
+        </section>
+
+        <!-- DELETION -->
+
+        <h1 class="block_title_h1"><i class="far fa-trash-alt"></i> Partie Suppression</h1>
+
+        <!-- CATEGORY DELETION -->
+
+        <section class="category_deletion">
+
+            <h2 class="block_title_h2 category_deletion_title"><i class="fas fa-folder-open"></i> Suppression d'une Catégorie</h2>
+
+            <h3 class="deletion_warning"><span style="color: red; "><i class="fas fa-exclamation-triangle"></i> Attention, en supprimant ce contenu, vous supprimerez tous les fichiers contenus à l'intérieur</span></h3>
+
+            <form method="POST">
+                <select name="delete_category_option" class="categorie_options">
+                    {% for category in values['categories'] %}
+
+                        <option value="{{ category.id }}">{{ category.name }}</option>
+
+                    {% endfor %}
+                </select>
+                <div class="button_forum_back"><input class="button_forum" type="submit" name="delete_category_submit" value="Supprimer"></div>
+
+                {% if msg['msg_delete_category_success'] is defined %}
+
+                    <p class="valide"><i class="fas fa-exclamation-triangle"></i> {{ msg['msg_delete_category_success'] }}</p>
+
+                {% elseif msg['msg_delete_category_error'] is defined %}
+
+                    <p class="error"><i class="far fa-check-circle"></i> {{ msg['msg_delete_category_error'] }}</p>
+
+                {% endif %}
+
+            </form>
+
+        </section>
+
+    {% endif %}
+
+        <!-- TICKETS LIST -->
+
+        <h1 class="block_title_h1"><i class="fas fa-list"></i> Liste des Tickets</h1>
+
+        <section class="tickets_list" id="tickets">
+
+            {% if values['ticket'] is not defined %}
+
+                <table>
+                    <tr class="table_head">
+                        <td>Visuel</td>
+                        <td>Pseudo</td>
+                        <td>Titre</td>
+                        <td>Priorité</td>
+                        <td>Date</td>
+                        <td>Dernier Message</td>
+                        <td>Accéder</td>
+                    </tr>
+                    {% for ticket in values['tickets'] %}
+
+                        {% if ticket.resolved == false %}
+
+                            <tr class="table_content">
+                                <td><img src="https://minotar.net/helm/{{ ticket.owner.pseudo }}/42.png" alt=""></td>
+                                <td>{{ ticket.owner.pseudo }}</td>
+                                <td>{{ ticket.title }}</td>
+                                <td>{{ ticket.getPriorityText() }}</td>
+                                <td>Le {{ ticket.createAt | date('d/m/Y à H:i') }}</td>
+                                {% if ticket.ticketsMessages | length > 0 %}
+                                    <td>{{ ticket.ticketsMessages[0].owner.pseudo }}</td>
+                                {% else %}
+                                    <td>Aucune Réponse</td>
+                                {% endif %}
+                                <td>
+                                    <a href="{{ path('admin') }}/support/{{ ticket.id }}#tickets" class="btn">
+                                        Voir plus
+                                    </a>
+                                </td>
+                            </tr>
+
+                        {% endif %}
+
+                    {% endfor %}
+                </table>
+
+            <!-- TICKET VIEW -->
+
+            {% else %}
+
+                {% set ticket = values['ticket'] %}
+
+                <div class="ticket_view">
+
+                    <div class="ticket_view_content">
+                        <h2>Contenu du ticket</h2>
+                        <p>{{ ticket.content }}</p>
+
+
+                        <div class="ticket_view_content_resolved_block">
+                            <h2>Résolu:
+                                {% if ticket.resolved == true %}
+                                    <i class="green fas fa-check"></i>
+                                {% else %}
+                                    <i class="red far fa-times-circle"></i>
+                                {% endif %}
+                            </h2>
+
+                            {% if ticket.resolved == false and power >= getPowerAdminSection(page_name, "resolve_ticket_power") %}
+                                <form method="post">
+                                    <button type="submit" name="ticket_resolved_submit" class="btn_resolved">
+                                        Passer en résolu
+                                    </button>
+                                </form>
+                            {% endif %}
+                        </div>
+
+
+                        <h2>Messages:</h2>
+                        {% for message in ticket.ticketsmessages %}
+
+                            <div class="ticket_message_frame">
+
+                                <div>
+                                    <p class="ticket_message_frame_top">
+                                        <i class="fas fa-reply-all"></i>
+                                        <img src="https://minotar.net/helm/{{ message.owner.pseudo }}/24.png" alt="">
+                                        {{ message.owner.pseudo }} le {{ message.createAt | date('d/m/Y à H:i') }}
+                                    </p>
+                                    <p class="ticket_message_frame_bot">
+                                        {{ message.content }}
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        {% endfor %}
+
+                        <form method="post">
+
+                            <div class="content-box">
+                                <textarea type="text" name="ticket_message_content" required></textarea>
+                                <label>Contenu du message</label>
+                            </div>
+
+                            <button type="submit" name="ticket_message_submit" class="btn_msg">
+                                Envoyer
+                            </button>
+
+                        </form>
+                    </div>
+
+                </div>
+
+            {% endif %}
+
+        </section>
+
+{% endblock %}

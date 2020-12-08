@@ -1,0 +1,269 @@
+html {
+    position: relative;
+    padding-bottom: 1400px;
+}
+
+main {
+    width: 95%;
+    margin: 400px auto 0 auto;
+}
+
+/*TOPIC*/
+
+li {
+    list-style: none;
+}
+
+.contener {
+    width: 80%;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.cat {
+    padding: 1%;
+    color: white;
+    font: bold 3em Verdana;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.background_cat {
+    background: #d34836;
+    border-radius:12px 0 12px 0;
+}
+
+.whiteBackGround {
+    background-color: white;
+    padding-bottom: 10px;
+}
+
+/* SECTION NEW TOPIC */
+
+.new_topic label {
+    font-family: Lobster, sans-serif;
+    font-size: 2.5em;
+}
+
+    /* TITLE INPUT */
+
+.title-box {
+    position: relative;
+    color: var(--grey);
+    width: 90%;
+    margin: 80px auto 0 auto;
+}
+
+.title-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1.4em;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid var(--grey);
+    outline: none;
+    background: transparent;
+    color: var(--grey);
+}
+
+.title-box label {
+    position: absolute;
+    top:-60px;
+    left: 0;
+    padding: 10px 0;
+    pointer-events: none;
+    transition: .5s;
+}
+
+    /* SELECT INPUT */
+
+.select_line {
+    display: flex;
+    justify-content: space-around;
+}
+
+.select-box {
+    margin-top: 60px;
+    position: relative;
+    width: 40%;
+}
+.select-box select {
+    width: 100%;
+    padding: 10px 0;
+    background: transparent;
+    color: var(--grey);
+    border: solid var(--grey) 1px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.4em;
+}
+
+.select-box option {
+    color: var(--grey);
+    border: solid var(--grey) 1px;
+}
+
+.select-box label {
+    position: absolute;
+    top:-62px;
+    left: 0;
+    padding: 10px 0;
+    pointer-events: none;
+    transition: .5s;
+    color: var(--grey);
+}
+
+.content-box {
+    position: relative;
+    color: var(--grey);
+    width: 90%;
+    margin: 100px auto 0 auto;
+}
+
+.content-box textarea{
+    width: 100%;
+    border: none;
+    border-bottom: var(--grey) solid 1px;
+    background: transparent;
+    color: var(--grey);
+    resize: none;
+}
+
+.content-box label {
+    position: absolute;
+    top:-65px;
+    left: -18px;
+    padding: 16px 17px;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.btn {
+    padding: 8px 0;
+    overflow: hidden;
+    position: relative;
+    border: solid 2px var(--grey);
+    width: 40%;
+    background: transparent;
+    color: var(--grey);
+    font-weight: bold;
+    display: block;
+    margin: 40px auto 20px auto;
+    border-radius: 5px;
+    font-family: "Lobster", sans-serif;
+    font-size: 3em;
+}
+
+.btn:hover {
+    background-color: var(--red);
+    border-color: var(--red);
+    cursor: pointer;
+}
+
+/* RESPONSIVE */
+
+/* IPAD ROTATE */
+
+@media screen and (max-width: 1024px) {
+
+    main {
+        width: 95%;
+        margin: 270px auto 0 auto;
+    }
+
+    main.sticky {
+        margin: 220px auto 0 auto;
+    }
+
+}
+
+/* MOBILE ROTATE */
+
+@media screen and (max-width: 812px) {
+
+    main {
+        width: 98%;
+        margin: 200px auto 0 auto;
+    }
+
+    main.sticky {
+        margin: 150px auto 0 auto;
+    }
+}
+
+/* IPAD */
+
+@media screen and (max-width: 768px) {
+
+    main {
+        width: 98%;
+        margin: 150px auto 0 auto;
+    }
+
+}
+
+/* MOBILE */
+
+@media screen and (max-width: 414px) {
+
+    main {
+        width: 100%;
+        margin: 73px 0 0 0;
+    }
+
+    .background_cat {
+        border-radius: 0;
+    }
+
+    .cat {
+        font-size: 1.8em;
+        text-align: center;
+    }
+
+    /* SECTION NEW TOPIC */
+
+    .new_topic label {
+        font-size: 1.5em;
+    }
+
+    /* TITLE INPUT */
+
+    .title-box input {
+        padding: 0;
+        font-size: 1em;
+    }
+
+    .title-box label {
+        top:-42px;
+    }
+
+    /* SELECT INPUT */
+
+    .select_line {
+        display: block;
+    }
+
+    .select-box {
+        width: 90%;
+        margin: 40px auto 0 auto;
+    }
+    .select-box select {
+        font-size: 1em;
+    }
+
+    .select-box label {
+        top:-42px;
+    }
+
+    .content-box label {
+        top:-45px;
+    }
+
+    .btn {
+        width: 90%;
+        font-size: 2em;
+    }
+}

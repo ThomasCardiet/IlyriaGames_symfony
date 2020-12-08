@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset("css/login.css") }}" />
+{% endblock %}
+
+{% block title %}Connexion{% endblock %}
+
+
+{% block body %}
+
+    {% if error %}
+        <section class="alert_msg">
+            <h2>Une ou plusieurs erreurs ont été détectées:</h2>
+            <p>La combinaison Pseudo/Mot de passe n'existe pas</p>
+        </section>
+    {% endif %}
+
+    <h2 class="content_title">Se connecter</h2>
+    <section class="content_login">
+
+        <div class="content_login_left">
+
+            <p>
+                L'inscription au site se fait via la première
+                connexion à nos serveurs de jeux.
+                <span>Enregistrez vous</span>, puis revenez sur cette
+                page afin d'accéder aux paramètres de votre
+                compte.
+                <br><br>
+                En vous inscrivant vous confirmez avoir pris
+                connaissance des <span>CGU</span> de notre site.
+            </p>
+
+        </div>
+
+        <form class="content_login_right" action="{{ path('security_login') }}" method="post">
+
+            <div class="login_input">
+                <i class="fas fa-user"></i>
+                <div class="login_input_right">
+                    <h3>Pseudo Serveur</h3>
+                    <input required type="text" name="_username" placeholder="Pseudo">
+                    <p>Pseudo oublié? <a href="">cliquez-ici</a></p>
+                </div>
+            </div>
+
+            <div class="login_input">
+                <i class="fas fa-lock"></i>
+                <div class="login_input_right">
+                    <h3>Mot de passe</h3>
+                    <input required type="password" name="_password" placeholder="Mot de passe">
+                    <p>Mot de passe oublié? <a href="">cliquez-ici</a></p>
+                </div>
+            </div>
+
+            <button class="login_btn" type="submit">Connexion</button>
+
+        </form>
+
+    </section>
+
+{% endblock %}

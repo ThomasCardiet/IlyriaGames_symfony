@@ -1,0 +1,167 @@
+{% extends 'forum/forum_base.html.twig' %}
+
+{% block stylesheets_form %}
+    <link rel="stylesheet" href="{{ asset('css/forum/topic_show.css') }}">
+{% endblock %}
+
+{% block body_form %}
+
+    <div class="whiteBackGround">
+
+        <div class="background_cat ribbon left-bottom right-top">
+            <h1 class="cat"><i class="fas fa-file-signature"></i> Sujet du Topic:
+                <span class="subject"><span style="color: orange; ">{{ topic.title }}</span></span>
+            </h1>
+        </div>
+
+        {% if app.user and topic.owner.username == app.user.username %}
+
+            <form method="POST">
+                <input class="button_delete" type="submit" name="delete_topic_submit" value="⚠ Supprimer le topic">
+            </form>
+
+        {% endif %}
+
+        <ol>
+
+            <!-- OWNER POST -->
+
+            <li class="flex">
+
+                <div class="topic_poster">
+                    <div class="avatar">
+                        <div>
+                            <h2>
+                                <span style="color: #F1D318; "><i class="fas fa-crown"></i> <span class="hide_responsive">Propriétaire</span></span>
+                            </h2>
+                            <img src="https://minotar.net/helm/{{ topic.owner.pseudo }}/100.png" alt="" class="head"/>
+                            <h2 class="poster_name ribbon left-top right-top">{{ topic.owner.pseudo }}</h2>
+                        </div>
+
+                        <div class="auteur_info">
+
+                            <p>INSCRIPTION: <br>{{ topic.owner.date | date("d/m/Y à H:i") }}</p>
+                            <p>GRADE: <br><span style="color: {{ user_server.rankColor }}; "> {{ user_server.groupe }}</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic_msg">
+
+                    {{ content | raw }}
+
+                </div>
+
+            </li>
+
+            <!-- RESPONSES -->
+
+            <h2 class="responses_title"><i class="fas fa-reply"></i> Réponses<hr class="responses_separator"></h2>
+
+            {% for response in responses %}
+
+                <li class="flex">
+
+                    <div class="topic_poster">
+                        <div class="avatar">
+                            <div>
+
+                                {% if response.owner.pseudo == topic.owner.pseudo %}
+
+                                    <h2><span style="color: #F1D318; "><i class="fas fa-crown"></i> <span class="hide_responsive">Propriétaire</span></span></h2>
+
+                                {% endif %}
+
+                                <img src="https://minotar.net/helm/{{ response.owner.pseudo }}/100.png" alt="" class="head"/>
+
+                                <h2 class="poster_name ribbon left-top right-top">{{ response.owner.pseudo }}</h2>
+                            </div>
+
+                            <div class="auteur_info">
+
+                                {% set account_server = findOneBy(repo_user_server, { 'pseudo': response.owner.pseudo }) %}
+
+                                <p>INSCRIPTION: <br>{{ response.owner.date | date("d/m/Y à H:i") }}</p>
+
+                                {% if account_server is not null %}
+                                    <p>GRADE: <br><span style="color: {{ account_server.rankcolor }}; "> {{ account_server.groupe }}</span></p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="topic_msg">
+                        <p>
+                            {{ response.content }}
+                        </p>
+                    </div>
+                </li>
+
+            {% endfor %}
+
+            <div class="pagination">
+
+                {% if page_nb > 1 %}
+
+                    <a href="{{ path('forum') }}/{{ category.id }}.{{ sub_category.id }}/{{ topic.get_url_custom_encode_title() }}.{{ topic.id }}/{{ page_nb - 1 }}"><div class="pages_nb no_cliqued">Précedente</div></a>
+
+                {% endif %}
+
+                {% for i in range(1, page_count) %}
+
+                    {% if i == page_nb %}
+
+                        <div class="pages_nb cliqued">
+                            {{ i }}
+                        </div>
+
+                    {% else %}
+
+                        <a href="{{ path('forum') }}/{{ category.id }}.{{ sub_category.id }}/{{ topic.get_url_custom_encode_title() }}.{{ topic.id }}/{{ i }}">
+                            <div class="pages_nb no_cliqued">
+                                {{ i }}
+                            </div>
+                        </a>
+
+                    {% endif %}
+
+                {% endfor %}
+
+                {% if page_nb < page_count %}
+
+                    <a href="{{ path('forum') }}/{{ category.id }}.{{ sub_category.id }}/{{ topic.get_url_custom_encode_title() }}.{{ topic.id }}/{{ page_nb + 1 }}">
+                        <div class="pages_nb no_cliqued">
+                            Suivante
+                        </div>
+                    </a>
+
+                {% endif %}
+
+            </div>
+
+        </ol>
+
+        <div class="response">
+            {% if app.user %}
+
+                <form method="POST">
+                    <textarea placeholder="Votre Réponse" name="tresponse">{% if response_content is not null %}{{ response_content }}{% endif %}</textarea>
+                    <input class="button" type="submit" name="tresponse_submit" value="Poster la réponse">
+                </form>
+
+                {% if msg is not null %}
+
+                    {{ msg }}
+
+                {% endif %}
+
+            {% else %}
+
+                <p class="error"><span style="color: red; "><i class="fas fa-exclamation-triangle"></i> Merci de vous connecter pour poster une réponse</span></p>
+
+            {% endif %}
+        </div>
+
+    </div>
+
+{% endblock %}

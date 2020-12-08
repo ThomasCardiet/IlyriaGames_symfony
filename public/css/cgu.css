@@ -1,0 +1,53 @@
+/*Main*/
+
+.contener {
+    width: 90%;
+    margin: auto;
+    background-color: #D1CCC4;
+    padding-bottom: 40px;
+    border-radius: 10px;
+}
+
+.TitleSup {
+    width: 100%;
+    margin: auto;
+    background-color: #FF9300;
+    text-align: center;
+}
+
+.Title {
+    width: 100%;
+    margin: auto;
+    background-color: #F4B449;
+    text-align: center;
+}
+
+.text {
+    width: 95%;
+    margin: auto;
+    background-color: #BFB6A7;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.text p {
+    padding: 5%;
+    font-family: "fontawesome", arial, sans-serif;
+}
+
+h1 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 2.5em;
+    font-family: "bodega", arial, sans-serif;
+}
+
+.TitleSup h1 {
+    font-size: 4em;
+}
+
+h2 {
+    font-size: 1.8em;
+    font-family: "bodega", arial, sans-serif;
+    padding-bottom: 10px;
+}

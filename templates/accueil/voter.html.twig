@@ -1,0 +1,239 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset("css/voter.css") }}" />
+{% endblock %}
+
+{% block title %}Voter{% endblock %}
+
+
+{% block body %}
+
+    {% if app.user %}
+
+        <section class="alert_msg">
+
+            {% if error_msg|length > 0 %}
+
+                <div class="alert_msg_error">
+
+                    <h3>Une ou plusieurs erreurs ont été détectées:</h3>
+
+                    <p>
+                        {% for error in error_msg %}
+                            -> {{ error }}<br>
+                        {% endfor %}
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+            {% if success_msg|length > 0 %}
+
+                <div class="alert_msg_success">
+
+                    <h3>Une ou plusieurs tâches ont été réalisées avec succès:</h3>
+
+                    <p>
+                        {% for success in success_msg %}
+                            -> {{ success }}<br>
+                        {% endfor %}
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+        </section>
+
+        <section class="sous_menu">
+            <ul>
+                {% for site in site_list %}
+                    <a href="{{ path('voter') }}/{{ loop.index-1 }}">
+                        <li>
+                            <p class="{% if loop.index-1 == current_site_id %}cliqued{% endif %}">
+                                {{ site.title }}
+                            </p>
+                        </li>
+                    </a>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section class="votes">
+
+            <div class="votes_loader_block">
+                <img class="votes_loader_content" src="{{ asset('img/gif/loader.gif') }}" alt="">
+            </div>
+
+            {% if app.user %}
+
+                <div class="profile">
+
+                    <div class="profile_header">
+
+                        <div class="profile_header_info">
+
+                            <div class="profile_header_img_block">
+                                <img class="profile_header_img" src="https://minotar.net/helm/{{ app.user.pseudo }}/110.png" alt="#"/>
+                            </div>
+
+                            <div class="profile_header_info_text">
+
+                                <p class="profile_header_info_text_count">
+                                    vous avez un total de {{ values[app.user.pseudo] }} vote(s)
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <p class="profile_header_text_account">
+                            Compte de vote: <span>{{ app.user.pseudo }}</span>
+                        </p>
+
+                    </div>
+
+
+                    <a target="_blank" id="{{ current_site_id }}" href="{{ current_site.link }}" class="vote-btn">Voter</a>
+
+                </div>
+
+                <hr>
+
+                <h3>Top 5 meilleurs voteurs</h3>
+
+                <table>
+                    <tr class="head_table">
+                        <td>Pseudo</td>
+                        <td>Votes</td>
+                        <td>Place</td>
+                    </tr>
+
+                    {% set place = 1 %}
+                    {% for pseudo, value in values %}
+                        {% if value > 0 %}
+
+                            <tr class="content_table">
+                                <td>{{ pseudo }}</td>
+                                <td>{{ value }}</td>
+                                <td>{{ place }}</td>
+                            </tr>
+
+                            {% set place = place + 1 %}
+                        {% endif %}
+                    {% endfor %}
+
+                </table>
+
+            {% else %}
+                <p>Merci de vous connecter avant achat</p>
+                <a href="{{ path("security_login") }}"><nav class="button">► Se Connecter</nav></a>
+            {% endif %}
+
+
+
+                    <!-- https://www.rpg-paradize.com/?page=vote&vote=113065 -->
+
+        </section>
+
+        <section class="rewards">
+
+            <h2>Récompenses</h2>
+
+            <div class="rewards_text_block">
+
+                <div>
+
+                    <h3>
+                        <i class="fas fa-info-circle"></i>
+                        Les votes sont récompensés de cadeaux:
+                    </h3>
+
+                    <p>
+                        - vous gagnez 8 IlyCoins à chaque vote
+                        <br>
+                        - des points boutique vous seront attribuées à chaque palier (exemple: {{ reward_info['unit_step'] }} votes => +{{ reward_info['unit_step_reward'] }} Don(s))
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="rewards_text_content">
+
+                <div class="rewards_text_content_top">
+
+                    <div class="rewards_text_content_top_left">
+
+                        <div class="rewards_text_content_top_left_left">
+
+                            <p>
+                                Prochain palier:
+                            </p>
+
+                        </div>
+
+                        <div class="rewards_text_content_top_left_right">
+
+                            <p>
+                                {{ reward_info['actual'] }}/{{ reward_info['next_step'] }}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="rewards_text_content_top_right">
+
+                        <div class="rewards_text_content_top_right_left">
+
+                            <p>
+                                Récompense déjà gagnée:
+                            </p>
+
+                        </div>
+
+                        <div class="rewards_text_content_top_right_right">
+
+                            <p>
+                                +{{ reward_info['reward_already_collected'] }} Don(s)
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="rewards_text_content_bar">
+                    <div class="rewards_text_content_bar_percentage has-tip"  style="width: {{ reward_info['percent_next_step'] }}%" data-perc="{{ reward_info['percent_next_step'] }}%">
+                    </div>
+                    <p>+{{ reward_info['unit_step_reward'] }} Don</p>
+                </div>
+
+            </div>
+
+        </section>
+
+    {% else %}
+
+        <section class="error_connection">
+
+            <h3>
+                <i class="fas fa-info-circle"></i> Merci de vous connecter afin d'accéder à cette page:
+            </h3>
+
+            <a href="{{ path('security_login') }}">Se connecter</a>
+
+        </section>
+
+    {% endif %}
+
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="{{ asset('js/votes.js') }}"></script>
+{% endblock %}

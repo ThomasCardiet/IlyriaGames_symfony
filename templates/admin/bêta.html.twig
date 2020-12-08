@@ -1,0 +1,73 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/admin/bêta.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <div class="bêta">
+
+        <h1 class="block_title_h1">Joueurs à accepter</h1>
+
+        <table>
+            <tr class="table_head">
+                <td>Visuel</td>
+                <td>Pseudo</td>
+                <td>Motivations</td>
+                <td></td>
+                <td></td>
+            </tr>
+            {% for beta in values['betas'] %}
+
+                {% if beta.accepted == false %}
+
+                    <tr class="table_content">
+                        <td><img src="https://minotar.net/helm/{{ beta.pseudo }}/42.png" alt=""></td>
+                        <td>{{ beta.pseudo }}</td>
+                        <td>{{ beta.motivation }}</td>
+                        <form method="post">
+                            <input type="hidden" name="beta_pseudo" value="{{ beta.pseudo }}">
+                            <td><button class="btn" type="submit" name="beta_submit_accept"><i class="fas fa-check"></i></button></td>
+                            <td><button class="btn" type="submit" name="beta_submit_decline"><i class="fas fa-times"></i></button></td>
+                        </form>
+
+                    </tr>
+
+                {% endif %}
+
+            {% endfor %}
+        </table>
+
+        <h1 class="block_title_h1">Joueurs acceptés</h1>
+
+        <table>
+            <tr class="table_head">
+                <td>Visuel</td>
+                <td>Pseudo</td>
+                <td>Motivations</td>
+                <td></td>
+            </tr>
+            {% for beta in values['betas'] %}
+
+                {% if beta.accepted == true %}
+
+                    <tr class="table_content">
+                        <td><img src="https://minotar.net/helm/{{ beta.pseudo }}/42.png" alt=""></td>
+                        <td>{{ beta.pseudo }}</td>
+                        <td>{{ beta.motivation }}</td>
+                        <form method="post">
+                            <input type="hidden" name="beta_pseudo" value="{{ beta.pseudo }}">
+                            <td><button class="btn" type="submit" name="beta_submit_decline"><i class="fas fa-times"></i></button></td>
+                        </form>
+
+                    </tr>
+
+                {% endif %}
+
+            {% endfor %}
+        </table>
+
+    </div>
+
+{% endblock %}

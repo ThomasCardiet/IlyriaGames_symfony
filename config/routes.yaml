@@ -1,0 +1,88 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+#Forum
+forum:
+  path:       /forum/{category_id}.{sub_category_id}/{topic_title}.{topic_id}/{page_nb}
+  controller: App\Controller\ForumController::index
+  defaults:
+    category_id:  null
+    sub_category_id: null
+    topic_title: null
+    topic_id: null
+    page_nb: null
+  requirements:
+    category_id:  \d+
+    sub_category_id: \d+
+    topic_id: \d+
+
+create_topic:
+  path:       /forum/NouveauTopic/{category_id}
+  controller: App\Controller\ForumController::create
+  defaults:
+    category_id:  null
+  requirements:
+    category_id:  \d+
+
+#Admin
+admin:
+  path:       /admin/{page_name}/{parameter}
+  controller: App\Controller\AdminController::index
+  defaults:
+    page_name:  null
+    parameter: null
+    ajax: null
+
+#Support
+support:
+  path:       /support/{ticket_title}.{ticket_id}
+  controller: App\Controller\AccueilController::support
+  defaults:
+    ticket_title:  null
+    ticket_id: null
+  requirements:
+    ticket_id:  \d+
+
+#Shop
+shop_validation:
+  path:       /boutique/validation/{mode_value}-{success_value}-{id_value}
+  controller: App\Controller\ShopController::shop_validation
+  defaults:
+    mode_value:  null
+    success_value: null
+    id_value: null
+
+shop:
+  path:       /boutique/{playerid_value}-{mode_value}-{offer_value}
+  controller: App\Controller\ShopController::shop
+  defaults:
+    playerid_value:  null
+    mode_value: null
+    offer_value: null
+    validation_value: null
+    validation_success_value: null
+    validation_id_value: null
+
+#Compte
+
+email_confirm:
+  path:       /compte/emailconfirm/{email_value}/{id_value}/{key_value}
+  controller: App\Controller\AccueilController::email_confirm
+  defaults:
+    email_value:  null
+    id_value: null
+    key_value: null
+
+account:
+  path:       /compte/{playerid_value}
+  controller: App\Controller\AccueilController::account
+  defaults:
+    playerid_value:  null
+
+#Voter
+voter:
+  path:        /voter/{id_site}
+  controller: App\Controller\AccueilController::voter
+  defaults:
+    id_site: 0
