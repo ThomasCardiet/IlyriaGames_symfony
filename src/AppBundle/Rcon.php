@@ -2,41 +2,6 @@
 
 namespace App\AppBundle;
 
-/*
-RCON remote console class, modified for minecraft compability by Tehbeard.
-
-!!!YOU MUST CONFIGURE RCON ON YOUR MINECRAFT SERVER FOR THIS TO WORK
-AT TIME OF WRITING ONLY 1.9pr4+ HAVE BUILTIN RCON SUPPORT!!!
-
-Example Code:
-============
-$r = new rcon("ip",port,"mot de passe"); //create rcon object for server on the rcon port with a specific password
-if($r->Auth()){ //Connect and attempt to authenticate
-{
-  $r->rconCommand("say Saving in 10 seconds!"); //send a command
-  sleep(10);
-  $r->rconCommand("save-all"); //send a command
-  $r->rconCommand("say Save complete!");//send a command
-  echo $r->rconCommand("list");//send a command, echo returned value
-  }
-}
-============
-
-Based upon the following work:
-[<<<
-    Basic CS:S Rcon class by Freman.  (V1.00)
-    ----------------------------------------------
-    Ok, it's a completely working class now with with multi-packet responses
-
-    Contact: printf("%s%s%s%s%s%s%s%s%s%d%s%s%s","rc","on",chr(46),"cl","ass",chr(64),"pri","ya",chr(46),2,"y",chr(46),"net")
-
-    Behaviour I've noticed:
-        rcon is not returning the packet id.
->>>]
-*/
-
-use phpDocumentor\Reflection\Types\This;
-
 define("SERVERDATA_EXECCOMMAND",2);
 define("SERVERDATA_AUTH",3);
 
@@ -50,27 +15,9 @@ class Rcon {
     var $error = [];
 
     function RconByServerName($server){
-        $path = "C:\Users\admin\Desktop\projet serveur";
-        $property = null;
-        $parameters = [];
-        try {
-            $property = file_get_contents($path . '\\' . $server . '\server.properties');
-        } catch (\Exception $e) {
-            $this->error = [
-                'state' => false,
-                'msg' => 'Ce serveur n\'existe pas'
-            ];
-            return $this;
-        }
+        $serverInfos = new ServerInformations($server);
 
-        $templates = explode("\r\n", $property);
-        foreach($templates as $template) {
-            if(!strpos($template, "=")) continue;
-            $params = explode("=", $template);
-            $parameters[$params[0]] = $params[1];
-        }
-
-        if($parameters['enable-rcon'] === "false"){
+        if($serverInfos->getProperty('enable-rcon') === "false"){
             $this->error = [
                 'state' => false,
                 'msg' => 'RCON non activé sur ce serveur'
@@ -78,7 +25,7 @@ class Rcon {
             return $this;
         }
 
-        $this->rcon($parameters['server-ip'],(int)$parameters['rcon.port'],$parameters['rcon.password']);
+        $this->rcon($serverInfos->getProperty('server-ip'),(int)$serverInfos->getProperty('rcon.port'),$serverInfos->getProperty('rcon.password'));
         return $this;
     }
 
@@ -102,10 +49,7 @@ class Rcon {
         // Real response (id: -1 = failure)
         $ret = $this->_PacketRead();
         //var_dump($ret);
-        if ($ret[0]['ID'] == -1) {
-            return false;
-        }
-        return true;
+        return !($ret[0]['ID'] === -1);
     }
 
     function _Set_Timeout(&$res,$s,$m=0) {

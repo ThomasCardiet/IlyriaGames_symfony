@@ -32,7 +32,6 @@ admin:
   defaults:
     page_name:  null
     parameter: null
-    ajax: null
 
 #Support
 support:

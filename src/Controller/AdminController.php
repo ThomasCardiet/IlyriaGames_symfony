@@ -40,7 +40,7 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin", name="admin")
      */
-    public function index(Request $request, UserPasswordEncoderInterface $encoder, $page_name, $parameter, $ajax)
+    public function index(Request $request, UserPasswordEncoderInterface $encoder, $page_name, $parameter)
     {
 
         $repo_users_site = $this->getDoctrine()->getRepository(Users::class);
@@ -706,26 +706,12 @@ class AdminController extends AbstractController
 
                 $json = null;
                 $path = (new ServerInformations(null))->getPath();
-                $folder = scandir($path);
                 switch ($parameter) {
 
                     case "getConsole":
                         $server = $_POST["server"];
-                        $log = null;
-                        try {
-                            $log = file_get_contents($path . '\\' . $server . '\logs\latest.log');
-                        } catch (\Exception $e) {}
+                        $log = (new ServerInformations($server))->getLogs();
                         $json = json_encode((new ServerMethods())->convert_to_utf8_recursively($log));
-                        break;
-
-                    case "getAllConsoles":
-                        $logs = [];
-                        foreach ($folder as $server) {
-                            try {
-                                $logs[$server] = file_get_contents($path . '\\' . $server . '\logs\latest.log');
-                            } catch (\Exception $e) {}
-                        }
-                        $json = json_encode((new ServerMethods())->convert_to_utf8_recursively($logs));
                         break;
 
                     case "sendServerCmd":
